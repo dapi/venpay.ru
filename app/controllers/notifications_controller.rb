@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def success
     result = CloudPaymentsNotify.new(
       payment: payment, 
