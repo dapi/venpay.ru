@@ -8,5 +8,5 @@ fetch(:default_env)[:rails_env] = :production
 server 'venpay.ru',
        user: fetch(:user),
        port: '22',
-       roles: %w[sidekiq web app db bugsnag].freeze,
+       roles: %w[web app db bugsnag].freeze,
        ssh_options: { forward_agent: true }
