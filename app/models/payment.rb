@@ -1,4 +1,6 @@
 class Payment < ApplicationRecord
+  include PaymentState
+
   belongs_to :machine
   belongs_to :price
 
