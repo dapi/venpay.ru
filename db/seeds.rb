@@ -7,7 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-account = Account.find_or_create_by(title: 'ROVOS')
+account = Account.find_or_create_by(
+  title: 'ROVOS',
+  cloud_payments_public_id: Rails.application.credentials.cloud_payments_public_id,
+  cloud_payments_api_key: Rails.application.credentials.cloud_payments_api_key
+)
+
 account.machines.create_with(public_number: '1278', location: 'Офис Данила').find_or_create_by(internal_id: 100020003)
 PRICES = [
   { price: 50.to_money(:rub), title: '5 минут' },

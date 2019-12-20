@@ -3,4 +3,4 @@ ul
   - prices.each do |price|
     li
       h3= price.title
-      = link_to price.price.format, '#'
+      = link_to price.price.format, payments_path(machine_id: machine.id, price_id: price.id), method: :post
