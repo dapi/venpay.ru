@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  public_number: 1
+  last_activity_at: 2019-12-20 11:50:11
+
+two:
+  account: two
+  public_number: 1
+  last_activity_at: 2019-12-20 11:50:11
