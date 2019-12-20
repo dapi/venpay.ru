@@ -1,0 +1,6 @@
+h2 Выберите тариф для оплаты
+ul
+  - prices.each do |price|
+    li
+      h3= price.title
+      = link_to price.price.format, '#'

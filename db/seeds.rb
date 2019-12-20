@@ -9,3 +9,12 @@
 
 account = Account.find_or_create_by(title: 'ROVOS')
 account.machines.create_with(public_number: '1278', location: 'Офис Данила').find_or_create_by(internal_id: 100020003)
+PRICES = [
+  { price: 50.to_money(:rub), title: '5 минут' },
+  { price: 90.to_money(:rub), title: '10 минут' },
+  { price: 150.to_money(:rub), title: '20 минут' },
+]
+
+PRICES.each do |price|
+  account.prices.create_with(price: price[:price]).find_or_create_by(title: price[:title])
+end

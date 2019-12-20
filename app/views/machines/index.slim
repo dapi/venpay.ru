@@ -1,0 +1,9 @@
+h1 Доступные аккаунты
+
+ul
+  - Account.order(:created_at).each do |account|
+    li
+      = account.title
+      ul
+        - account.machines.order(:public_number).each do |machine|
+          ul= link_to machine.public_number, machine_path(machine.id)

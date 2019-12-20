@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_085011) do
+ActiveRecord::Schema.define(version: 2019_12_20_120026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,5 +37,17 @@ ActiveRecord::Schema.define(version: 2019_12_20_085011) do
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
   end
 
+  create_table "prices", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id", "title"], name: "index_prices_on_account_id_and_title", unique: true
+    t.index ["account_id"], name: "index_prices_on_account_id"
+  end
+
   add_foreign_key "machines", "accounts"
+  add_foreign_key "prices", "accounts"
 end
