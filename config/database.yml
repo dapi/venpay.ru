@@ -80,6 +80,10 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: venpay_production
   username: venpay
-  password: <%= ENV['VENPAY_DATABASE_PASSWORD'] %>
+  host: /var/run/postgresql
+  reconnect: true
+  encoding: unicode
+  pool: 30

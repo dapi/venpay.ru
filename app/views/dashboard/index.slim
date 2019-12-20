@@ -1,0 +1,6 @@
+h1 Доступные аккаунты
+
+ul
+  - accounts.order(:created_at).each do |account|
+    li
+      = account.title
