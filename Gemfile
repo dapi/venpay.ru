@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'slim-rails'
 gem 'money-rails'
 gem 'workflow'
-gem 'cloud_payments'
+gem 'cloud_payments', github: 'brandymint/cloud_payments', branch: 'local_configuration'
 gem 'semver2'
 gem 'rails-i18n'
 
