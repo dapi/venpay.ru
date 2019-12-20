@@ -7,14 +7,14 @@ class CloudPaymentsNotify
 
   def notify_success
     validate!
-    payment.pay!
+    payment.pay! payload: payload, hmac_token: hmac_token
 
     success_response
   end
 
   def notify_fail
     validate!
-    payment.fail!
+    payment.fail! payload: payload, hmac_token: hmac_token
 
     success_response
   end

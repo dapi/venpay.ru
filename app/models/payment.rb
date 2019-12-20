@@ -12,4 +12,14 @@ class Payment < ApplicationRecord
     self.total_price = price.price
     self.title = 'Оплата ' + total_price.format
   end
+
+  private
+
+  def pay(payload: , hmac_token:)
+    update! payload: payload, hmac_token: hmac_token
+  end
+
+  def fail(payload: , hmac_token:)
+    update! payload: payload, hmac_token: hmac_token
+  end
 end
