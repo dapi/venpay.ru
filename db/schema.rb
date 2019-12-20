@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_232413) do
+ActiveRecord::Schema.define(version: 2019_12_20_233427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 2019_12_20_232413) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "cloud_payments_public_id"
-    t.string "cloud_payments_api_key"
+    t.string "encrypted_cloud_payments_api_key"
+    t.string "encrypted_cloud_payments_api_key_iv"
     t.index ["title"], name: "index_accounts_on_title", unique: true
   end
 

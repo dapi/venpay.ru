@@ -34,6 +34,7 @@ gem 'workflow'
 gem 'cloud_payments', github: 'brandymint/cloud_payments', branch: 'local_configuration'
 gem 'semver2'
 gem 'rails-i18n'
+gem 'attr_encrypted'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
