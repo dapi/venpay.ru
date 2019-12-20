@@ -10,6 +10,9 @@ class CloudPaymentsNotify
     payment.pay! payload: payload, hmac_token: hmac_token
 
     success_response
+  rescue CloudPayments::Webhooks::HMACError => e
+    Bugsnag.notify e
+    fail_response
   end
 
   def notify_fail
@@ -17,6 +20,9 @@ class CloudPaymentsNotify
     payment.fail! payload: payload, hmac_token: hmac_token
 
     success_response
+  rescue CloudPayments::Webhooks::HMACError => e
+    Bugsnag.notify e
+    fail_response
   end
 
   private
@@ -29,6 +35,10 @@ class CloudPaymentsNotify
 
   def success_response
     { "code": 0 }
+  end
+
+  def fail_response
+    'error'
   end
 
   def webhooks
