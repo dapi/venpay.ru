@@ -14,21 +14,24 @@ ActiveRecord::Schema.define(version: 2019_12_20_085011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "accounts", force: :cascade do |t|
+  create_table "accounts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["title"], name: "index_accounts_on_title", unique: true
   end
 
-  create_table "machines", force: :cascade do |t|
-    t.bigint "account_id", null: false
+  create_table "machines", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.integer "internal_id", null: false
     t.integer "public_number", null: false
     t.datetime "last_activity_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_machines_on_account_id"
+    t.index ["internal_id"], name: "index_machines_on_internal_id", unique: true
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
   end
 
