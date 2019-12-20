@@ -80,6 +80,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
+    bugsnag (6.12.2)
+      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     byebug (11.0.1)
     capistrano (3.11.2)
@@ -225,6 +227,7 @@ GEM
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    semver (1.0.1)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -283,6 +286,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bugsnag (~> 6.12)
   byebug
   capistrano
   capistrano-bundler
@@ -307,6 +311,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   sass-rails (>= 6)
   selenium-webdriver
+  semver
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
