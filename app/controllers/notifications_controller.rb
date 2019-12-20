@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
     result = CloudPaymentsNotify.new(
       payment: payment, 
       payload: request.body.read, 
-      hmac_token: headers['Content-Hmac']
+      hmac_token: requset.headers['Content-Hmac']
     ).notify_success
 
     render json: result
