@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_120026) do
+ActiveRecord::Schema.define(version: 2019_12_20_122128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_12_20_120026) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cloud_payments_public_id"
+    t.string "cloud_payments_api_key"
     t.index ["title"], name: "index_accounts_on_title", unique: true
   end
 
@@ -37,6 +39,19 @@ ActiveRecord::Schema.define(version: 2019_12_20_120026) do
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
   end
 
+  create_table "payments", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "machine_id", null: false
+    t.uuid "price_id", null: false
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "USD", null: false
+    t.string "title", null: false
+    t.string "state", default: "new", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["machine_id"], name: "index_payments_on_machine_id"
+    t.index ["price_id"], name: "index_payments_on_price_id"
+  end
+
   create_table "prices", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.integer "price_cents", default: 0, null: false
@@ -49,5 +64,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_120026) do
   end
 
   add_foreign_key "machines", "accounts"
+  add_foreign_key "payments", "machines"
+  add_foreign_key "payments", "prices"
   add_foreign_key "prices", "accounts"
 end

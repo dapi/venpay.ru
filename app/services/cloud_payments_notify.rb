@@ -1,0 +1,50 @@
+class CloudPaymentsNotify
+  def initialize(payment:, payload: , hmac_token: )
+    @payment = payment
+    @payload = payload
+    @hmac_token = hmac_token
+  end
+
+  def notify_success
+    validate!
+    payment.pay!
+
+    success_response
+  end
+
+  def notify_fail
+    validate!
+    payment.fail!
+
+    success_response
+  end
+
+  private
+
+  attr_reader :payment, :payload, :hmac_token
+
+  def validate!
+    webhooks.validate_data! payload, hmac_token
+  end
+
+  def success_response
+    { "code": 0 }
+  end
+
+  def webhooks
+    @webhooks ||= CloudPayments::Webhooks.new config
+  end
+
+  def config
+    CloudPayments::Config.configure do |c|
+      c.public_key = payment.account.cloud_payments_public_id
+      c.secret_key = payment.account.cloud_payments_api_key
+      c.logger = logger
+      c.raise_banking_errors = true
+    end
+  end
+
+  def logger
+    @logger ||= ActiveSupport::Logger.new Rails.root.join('./log/cloud_payments.log')
+  end
+end
