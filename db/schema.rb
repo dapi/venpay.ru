@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_12_20_085011) do
     t.integer "internal_id", null: false
     t.integer "public_number", null: false
     t.datetime "last_activity_at"
+    t.string "location", null: false
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_machines_on_account_id"

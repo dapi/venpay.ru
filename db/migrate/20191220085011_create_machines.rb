@@ -5,6 +5,8 @@ class CreateMachines < ActiveRecord::Migration[6.0]
       t.integer :internal_id, null: false
       t.integer :public_number, null: false
       t.timestamp :last_activity_at
+      t.string :location, null: false
+      t.string :description
 
       t.timestamps
     end

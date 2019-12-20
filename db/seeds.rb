@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+account = Account.find_or_create_by(title: 'ROVOS')
+account.machines.create_with(public_number: '1278', location: 'Офис Данила').find_or_create_by(internal_id: 100020003)
