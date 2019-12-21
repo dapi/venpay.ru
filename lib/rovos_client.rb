@@ -12,9 +12,8 @@ class RovosClient
   READ_TIMEOUT = 5
   HEADER = { 'User-Agent' => 'RovosClient (ruby) v0.1.0' }
 
-  def initialize(uri, secret_key=nil)
+  def initialize(uri)
     @uri = URI(uri)
-    @secret_key = secret_key
   end
 
   # @param params [HASH] {:state, :work_time}
@@ -49,16 +48,12 @@ class RovosClient
 
   private
 
-  attr_reader :uri, :secret_key
+  attr_reader :uri
 
   CONTENT_TYPE = 'application/json'.freeze
 
   def validate_response!(response, code)
     raise "Wrong response code #{response.code}" unless response.code == code.to_s
     raise "Content-Type must be #{CONTENT_TYPE} (#{response.content_type})" unless response.content_type == CONTENT_TYPE
-  end
-
-  def signature(params)
-    Digest::MD5.base64digest [params.sort_by(&:first).flatten, secret_key].join
   end
 end
