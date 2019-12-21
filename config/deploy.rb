@@ -8,7 +8,7 @@ set :repo_url, 'https://github.com/BrandyMint/venpay.ru.git' if ENV['USE_LOCAL_R
 set :keep_releases, 10
 
 set :linked_files, %w[config/master.key]
-set :linked_dirs, %w[log node_modules tmp/pids tmp/cache tmp/sockets public/assets public/packs]
+set :linked_dirs, %w[config/certs log node_modules tmp/pids tmp/cache tmp/sockets public/assets public/packs]
 
 set :config_files, fetch(:linked_files)
 
