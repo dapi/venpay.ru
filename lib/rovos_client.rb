@@ -11,8 +11,9 @@ class RovosClient
   READ_TIMEOUT = 5
   HEADER = { 'User-Agent' => 'RovosClient (ruby) v0.1.0' }
 
-  def initialize(host)
+  def initialize(host, ssl: {})
     @host = host
+    @ssl = ssl
   end
 
   # @param params [HASH] {:state, :work_time}
@@ -39,8 +40,6 @@ class RovosClient
 
   private
 
-  attr_reader :host
-
   CONTENT_TYPE = 'application/json'.freeze
 
   def validate_response!(response, status)
@@ -49,17 +48,9 @@ class RovosClient
     raise "Content-Type must be #{CONTENT_TYPE} (#{content_type})" unless content_type == CONTENT_TYPE
   end
 
-  def client_cert
-    OpenSSL::X509::Certificate.new File.read Rails.root.join('config/certs/broker.venpay.ru.pem')
-  end
-
-  def client_key
-    OpenSSL::PKey.read File.read Rails.root.join('config/certs/broker.venpay.ru.key')
-  end
-
   def connection
-    @connection ||= Faraday.new host,
+    @connection ||= Faraday.new @host,
       request: { timeout: READ_TIMEOUT, open_timeout: OPEN_TIMEOUT },
-      ssl: { client_cert:  client_cert, client_key: client_key, verify: false }
+      ssl: @ssl
   end
 end
