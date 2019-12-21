@@ -6,6 +6,7 @@
 #
 class QrCodeGenerator
   DIR = Rails.root.join './public'
+  DEFAULT_EXT = :svg
 
   def self.for_machine(machine)
     new Rails.application.routes.url_helpers.slug_url(machine.slug), machine.id
@@ -49,7 +50,7 @@ class QrCodeGenerator
     '/' + qr_code_path
   end
 
-  def qr_code_path(ext = :svg)
+  def qr_code_path(ext = DEFAULT_EXT)
     "qrcodes/#{@file}.#{ext}"
   end
 
