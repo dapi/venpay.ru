@@ -10,6 +10,7 @@ require 'uri'
 class RovosClient
   OPEN_TIMEOUT = 2
   READ_TIMEOUT = 5
+  HEADER = { 'User-Agent' => 'RovosClient (ruby) v0.1.0' }
 
   def initialize(uri, secret_key=nil)
     @uri = URI(uri)
@@ -27,25 +28,20 @@ class RovosClient
   # post('/machines/100020003', state: 4)                # Узнать состояние
   # post('/machines/100020003', state: 2, work_time: 10) # Включить на 10 минут
   def post(path, params)
-    header = { "X-Signature" => signature(params) }
     uri.path = path
     options = { open_timeout: OPEN_TIMEOUT, read_timeout: READ_TIMEOUT, use_ssl: uri.scheme == 'https' }
     response = Net::HTTP.start(uri.hostname, uri.port, options) do |http|
-      http.post(uri, '', header)
+      http.post(uri, '', HEADER)
     end
     validate_response! response, 201
     JSON.parse response.body
   end
 
-  def get(path)
-    # Параметр t не требуется сервером, однако использутся для того,
-    # чтобы было из чего формировать подпись
-    params = {t: Time.zone.now.to_i}
-    header = { "X-Signature" => signature(params) }
+  def get(path, params = {})
     uri.path = path
     options = { open_timeout: OPEN_TIMEOUT, read_timeout: READ_TIMEOUT, use_ssl: uri.scheme == 'https' }
     response = Net::HTTP.start(uri.hostname, uri.port, options) do |http|
-      http.get(uri, header)
+      http.get(uri, HEADER)
     end
     validate_response! response, 200
     JSON.parse response.body
