@@ -36,6 +36,8 @@ gem 'semver2'
 gem 'rails-i18n'
 gem 'attr_encrypted'
 gem 'faraday'
+gem 'rqrcode'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'httplog'

@@ -1,9 +1,16 @@
 h1 Доступные аккаунты
 
-ul
-  - Account.order(:created_at).each do |account|
-    li
-      = account.title
-      ul
-        - account.machines.order(:public_number).each do |machine|
-          ul= link_to machine.public_number, machine_path(machine.id)
+- Account.order(:created_at).each do |account|
+  h2= account.title
+
+  table.table
+    thead
+      tr
+        th Публичный номер машины
+        th QR Код
+    - account.machines.order(:public_number).each do |machine|
+      tr
+        td
+          h3= machine.public_number
+        td= image_tag qr_code_url(machine)
+        td= link_to 'Оплата', machine_path(machine.id)

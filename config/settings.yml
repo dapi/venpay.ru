@@ -1,0 +1,18 @@
+defaults: &defaults
+  default_url_options: &default_url_options
+    host: <%= ENV['APP_HOST'] || 'localhost' %>
+    protocol: 'https'
+
+production:
+  <<: *defaults
+  default_url_options:
+    host: https://venpay.ru
+    protocol: 'https'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  default_url_options:
+    host: test.host
