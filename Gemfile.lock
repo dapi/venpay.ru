@@ -329,6 +329,7 @@ DEPENDENCIES
   capistrano3-puma!
   capybara (>= 2.15)
   cloud_payments!
+  faraday
   httplog
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)

@@ -35,6 +35,7 @@ gem 'cloud_payments', github: 'brandymint/cloud_payments', branch: 'local_config
 gem 'semver2'
 gem 'rails-i18n'
 gem 'attr_encrypted'
+gem 'faraday'
 
 group :development, :test do
   gem 'httplog'
