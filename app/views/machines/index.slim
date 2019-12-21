@@ -8,6 +8,7 @@ h1 Доступные аккаунты
       tr
         th Публичный номер машины
         th QR Код
+        th Действия
     - account.machines.order(:public_number).each do |machine|
       tr
         td
