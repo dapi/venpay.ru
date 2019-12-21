@@ -37,8 +37,12 @@ gem 'rails-i18n'
 gem 'attr_encrypted'
 
 group :development, :test do
+  gem 'httplog'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
