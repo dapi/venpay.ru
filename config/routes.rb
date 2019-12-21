@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'machines#index'
   get '/m/:slug', to: 'machines#show', as: :slug
 
-  resources :machines
+  resources :machines do
+    member do
+      get 'status'
+    end
+  end
 
   resources :payments do
     member do
