@@ -22,7 +22,9 @@ hr
         td
           h3= machine.public_number
         td= machine.location
-        td= image_tag qr_code_url(machine)
+        td
+          = link_to qr_code_url(machine), target: '_blank' do
+            = image_tag qr_code_url(machine)
         td
           ul.list-inline
             li.list-inline-item= link_to 'Оплата', slug_path(machine.slug)
