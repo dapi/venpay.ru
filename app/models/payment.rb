@@ -10,7 +10,7 @@ class Payment < ApplicationRecord
 
   before_validation do
     self.total_price = price.price
-    self.title = 'Оплата ' + total_price.format
+    self.title = "Оплата #{price.title} " + total_price.format
   end
 
   private
