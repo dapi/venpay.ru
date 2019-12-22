@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
     payment = Payment.find params[:id]
 
     if payment.paid?
+      # TODO Убедиться что по этому платежу машину включали,если нет, то запустить процесс включения
       render :success
     else
       render locals: { payment: payment }
@@ -20,9 +21,36 @@ class PaymentsController < ApplicationController
   end
 
   def success
+    # TODO
+    #
+    ## Убедиться что машину еще не включали.
+    # 1. Если она уже включена то показывать страницу отсчета.
+    # 2. Если была включена и закончила работу, то показывать
+    #    страницу что по этой оплату кресло уже закончило массаж.
+    # 3. Если машину еще не включали, то включить:
+    #
+    ## Включение машины
+    #
+    #   response = RovosClient.build.post("/machines/#{machine.internal_id}", state: 2, work_time: price.work_time)
+    #   # => {"sent"=>{"header"=>17271, "state"=>2, "work_time"=>10, "time_left"=>0, "machine_id"=>100020003}, "received"=>{"header"=>17271, "state"=>2, "work_time"=>10, "time_left"=>2560, "machine_id"=>100020003}}
+    #
+    # 2. Убедиться что машина включилась. Для этого нужно ловить exception.
+    # 3. Логировать в Rails.logger что машину включили и результат (response)
+    # 4. Показывать клиенту страницу что кресло включится через несколько секунд и показывтаь обратный отсчёт.
+    #
+    ## Если машина не включилась (поймали исключение), то:
+    #
+    # 1. Логировать исключение в Rails.logger
+    # 2. Отправить уведомление в Bugsang с указанием price, machine, error
+    # 3. Говорить клиенту что включение не удалось и возвращать деньги
   end
 
   def fail
+    # TODO
+    # 1. Сообщить админам (bugsnag)
+    # 2. Записать в лог Rails.logger
+    # 2. Сообщить пользователю причину.
+    # 3. Дать возможность повторить оплату (например другой картой)
   end
 
   private
