@@ -1,4 +1,5 @@
-h1 Доступные аккаунты
+h1 Доступные устройства
+hr
 
 - Account.order(:created_at).each do |account|
   h2= account.title
@@ -7,12 +8,15 @@ h1 Доступные аккаунты
     thead
       tr
         th Публичный номер машины
+        th Адрес установки
         th QR Код
         th Действия
     - account.machines.order(:public_number).each do |machine|
       tr
         td
           h3= machine.public_number
+        td= machine.location
         td= image_tag qr_code_url(machine)
-        td= link_to 'Оплата', slug_path(machine.slug)
-        td= link_to 'Статус', status_machine_path(machine)
+        td
+          = link_to 'Оплата', slug_path(machine.slug)
+          = link_to 'Статус', status_machine_path(machine)

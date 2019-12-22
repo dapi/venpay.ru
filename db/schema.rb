@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_045906) do
+ActiveRecord::Schema.define(version: 2019_12_22_154233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2019_12_22_045906) do
   create_table "machines", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.integer "internal_id", null: false
-    t.string "public_number", null: false
+    t.string "public_number", limit: 5, null: false
     t.datetime "last_activity_at"
     t.string "location", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "slug", null: false
+    t.string "slug", limit: 6, null: false
     t.index ["account_id"], name: "index_machines_on_account_id"
     t.index ["internal_id"], name: "index_machines_on_internal_id", unique: true
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
