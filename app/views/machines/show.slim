@@ -1,7 +1,10 @@
-h2 Выберите длительность массажа
+h2.mb-3 Выберите длительность массажа
 
 nav.nav.flex-column
   - prices.order(:position).each do |price|
     = link_to payments_path(machine_id: machine.id, price_id: price.id), method: :post, class: 'nav-link btn btn-success btn-lg', style: 'margin-bottom: 1em' do
       h3= price.title
       = price.price.format
+
+- if account.is_test?
+  = render 'test_cards'
