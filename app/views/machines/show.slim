@@ -1,6 +1,7 @@
-h2 Выберите тариф для оплаты
-ul
-  - prices.each do |price|
-    li
+h2 Выберите длительность массажа
+
+nav.nav.flex-column
+  - prices.order(:position).each do |price|
+    = link_to payments_path(machine_id: machine.id, price_id: price.id), method: :post, class: 'nav-link btn btn-success btn-lg', style: 'margin-bottom: 1em' do
       h3= price.title
-      = link_to price.price.format, payments_path(machine_id: machine.id, price_id: price.id), method: :post
+      = price.price.format

@@ -11,6 +11,6 @@ class MachinesController < ApplicationController
   def show
     machine = params[:id].present? ? Machine.find(params[:id]) : Machine.find_by!(slug: params[:slug])
     prices = machine.account.prices.order(:title)
-    render locals: { machine: machine, prices: prices }
+    render locals: { machine: machine, prices: prices }, layout: 'mobile'
   end
 end

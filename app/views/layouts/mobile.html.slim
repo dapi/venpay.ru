@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title Venpay
+    = csrf_meta_tag
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container-sm.px-3.py-3
+      = yield
