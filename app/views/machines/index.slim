@@ -2,12 +2,20 @@ h1 Доступные устройства
 hr
 
 - Account.order(:created_at).each do |account|
-  h2
-    = account.title
-  - if account.is_test
-    .badge.badge-warning Тестовый режим
-  - else
-    .badge.badge-success Рабочий режим
+  .row
+    .col-md-6
+      h2
+        = account.title
+      - if account.is_test
+        .badge.badge-warning Тестовый режим
+      - else
+        .badge.badge-success Рабочий режим
+    .col-md-6
+      h3 Цены
+      ul
+      - account.prices.order(:position).each do |price|
+        li
+          = "#{price.title} (#{price.price.format})"
   br
   br
   table.table
