@@ -9,7 +9,7 @@ class MachinesController < ApplicationController
   end
 
   def show
-    machine = Machine.find params[:id]
+    machine = params[:id].present? ? Machine.find(params[:id]) : Machine.find_by!(slug: params[:slug])
     prices = machine.account.prices.order(:title)
     render locals: { machine: machine, prices: prices }
   end
