@@ -1,4 +1,4 @@
-class MachinesController < ApplicationController
+class Mobile::MachinesController < ApplicationController
   def index
   end
 

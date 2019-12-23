@@ -1,4 +1,4 @@
-class PaymentsController < ApplicationController
+class Mobile::PaymentsController < ApplicationController
   layout 'mobile'
   include AutoLogger
 

@@ -1,29 +1,30 @@
 Log outgoing HTTP requests in ruby
 Включаю HttpLog в ./log/http_outcome.log
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                                 root GET    /                                                                                        welcome#index
-                                 slug GET    /m/:slug(.:format)                                                                       machines#show
-                       status_machine GET    /machines/:id/status(.:format)                                                           machines#status
-                             machines GET    /machines(.:format)                                                                      machines#index
-                                      POST   /machines(.:format)                                                                      machines#create
-                          new_machine GET    /machines/new(.:format)                                                                  machines#new
-                         edit_machine GET    /machines/:id/edit(.:format)                                                             machines#edit
-                              machine GET    /machines/:id(.:format)                                                                  machines#show
-                                      PATCH  /machines/:id(.:format)                                                                  machines#update
-                                      PUT    /machines/:id(.:format)                                                                  machines#update
-                                      DELETE /machines/:id(.:format)                                                                  machines#destroy
-                      success_payment GET    /payments/:id/success(.:format)                                                          payments#success
-                         fail_payment GET    /payments/:id/fail(.:format)                                                             payments#fail
-                             payments GET    /payments(.:format)                                                                      payments#index
-                                      POST   /payments(.:format)                                                                      payments#create
-                          new_payment GET    /payments/new(.:format)                                                                  payments#new
-                         edit_payment GET    /payments/:id/edit(.:format)                                                             payments#edit
-                              payment GET    /payments/:id(.:format)                                                                  payments#show
-                                      PATCH  /payments/:id(.:format)                                                                  payments#update
-                                      PUT    /payments/:id(.:format)                                                                  payments#update
-                                      DELETE /payments/:id(.:format)                                                                  payments#destroy
-                success_notifications POST   /notifications/success(.:format)                                                         notifications#success
-                   fail_notifications POST   /notifications/fail(.:format)                                                            notifications#fail
+                       status_machine GET    /machines/:id/status(.:format)                                                           admin/machines#status
+                             machines GET    /machines(.:format)                                                                      admin/machines#index
+                                      POST   /machines(.:format)                                                                      admin/machines#create
+                          new_machine GET    /machines/new(.:format)                                                                  admin/machines#new
+                         edit_machine GET    /machines/:id/edit(.:format)                                                             admin/machines#edit
+                              machine GET    /machines/:id(.:format)                                                                  admin/machines#show
+                                      PATCH  /machines/:id(.:format)                                                                  admin/machines#update
+                                      PUT    /machines/:id(.:format)                                                                  admin/machines#update
+                                      DELETE /machines/:id(.:format)                                                                  admin/machines#destroy
+                                 root GET    /                                                                                        mobile/welcome#index
+                                 slug GET    /m/:slug(.:format)                                                                       mobile/machines#show
+                                      GET    /machines/:id(.:format)                                                                  mobile/machines#show
+                      success_payment GET    /payments/:id/success(.:format)                                                          mobile/payments#success
+                         fail_payment GET    /payments/:id/fail(.:format)                                                             mobile/payments#fail
+                             payments GET    /payments(.:format)                                                                      mobile/payments#index
+                                      POST   /payments(.:format)                                                                      mobile/payments#create
+                          new_payment GET    /payments/new(.:format)                                                                  mobile/payments#new
+                         edit_payment GET    /payments/:id/edit(.:format)                                                             mobile/payments#edit
+                              payment GET    /payments/:id(.:format)                                                                  mobile/payments#show
+                                      PATCH  /payments/:id(.:format)                                                                  mobile/payments#update
+                                      PUT    /payments/:id(.:format)                                                                  mobile/payments#update
+                                      DELETE /payments/:id(.:format)                                                                  mobile/payments#destroy
+                success_notifications POST   /notifications/success(.:format)                                                         mobile/notifications#success
+                   fail_notifications POST   /notifications/fail(.:format)                                                            mobile/notifications#fail
         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
