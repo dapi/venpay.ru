@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  layout 'mobile'
+  layout 'qrscanner'
 
   def index
   end
