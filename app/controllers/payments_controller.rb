@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  layout 'mobile'
+
   def show
     payment = Payment.find params[:id]
 
@@ -16,6 +18,7 @@ class PaymentsController < ApplicationController
     redirect_to payment_path(payment)
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:error] = e.message
+    Bugsnag.notify e
 
     redirect_back fallback: machines_path
   end
