@@ -28,7 +28,7 @@ hr
     - account.machines.order(:public_number).each do |machine|
       tr
         td
-          h3= machine.public_number
+          h3= public_number machine.public_number
         td= machine.location
         td
           = link_to qr_code_url(machine), target: '_blank' do

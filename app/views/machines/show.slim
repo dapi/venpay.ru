@@ -1,4 +1,5 @@
 h2.mb-3 Выберите длительность массажа
+address #{machine.location}, кресло #{public_number(machine.public_number)}
 
 nav.nav.flex-column
   - prices.order(:position).each do |price|

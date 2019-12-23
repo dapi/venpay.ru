@@ -7,7 +7,11 @@ module ApplicationHelper
     "Кресло N#{machine.public_number} по адресу #{machine.location}"
   end
 
-  def humenized_price(price)
+  def humanized_price(price)
     "#{price.title} за #{price.price.format}"
+  end
+
+  def public_number(pn)
+    "№#{pn[0,3]}-#{pn[3,3]}"
   end
 end
