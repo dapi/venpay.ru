@@ -26,4 +26,8 @@ module ApplicationHelper
 
     content_tag :span, buffer.join(', '), class: 'badge badge-success'
   end
+
+  def home_button
+    link_to 'Вернуться в начало', root_path, class: 'btn btn-outline-secondary mt-4'
+  end
 end

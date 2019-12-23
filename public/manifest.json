@@ -1,6 +1,6 @@
 {
-  "short_name": "venpay.ru",
-  "name": "Оплата QR-кодом вендинговых услуг",
+  "short_name": "Оплата QR",
+  "name": "Оплата QR-кодом вендинговых услуг (venpay.ru)",
   "icons": [
     {
       "src": "launcher-icon-4x.png",
