@@ -43,6 +43,9 @@ class PaymentsController < ApplicationController
     # 1. Логировать исключение в Rails.logger
     # 2. Отправить уведомление в Bugsang с указанием price, machine, error
     # 3. Говорить клиенту что включение не удалось и возвращать деньги
+
+    payment = Payment.find params[:id]
+    render locals: { payment: payment }
   end
 
   def fail

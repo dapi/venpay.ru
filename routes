@@ -1,8 +1,9 @@
 Log outgoing HTTP requests in ruby
 Включаю HttpLog в ./log/http_outcome.log
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                                 root GET    /                                                                                        machines#index
+                                 root GET    /                                                                                        welcome#index
                                  slug GET    /m/:slug(.:format)                                                                       machines#show
+                       status_machine GET    /machines/:id/status(.:format)                                                           machines#status
                              machines GET    /machines(.:format)                                                                      machines#index
                                       POST   /machines(.:format)                                                                      machines#create
                           new_machine GET    /machines/new(.:format)                                                                  machines#new
