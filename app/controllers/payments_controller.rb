@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
   def create
     payment = Payment.create! permitted_params
 
-    logger.info "Create CloudPayments payment #{payment.id}"
+    logger.info "Create CloudPayments payment #{payment.id} for machine #{machine.public_number} with #{payment.price.title}"
     redirect_to payment_path(payment)
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:error] = e.message
