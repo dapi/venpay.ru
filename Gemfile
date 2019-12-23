@@ -43,7 +43,6 @@ gem 'simple_form'
 gem 'auto_logger'
 gem 'pagy'
 
-
 group :development, :test do
   gem 'httplog'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

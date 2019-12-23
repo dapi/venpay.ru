@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   layout 'mobile'
+  include AutoLogger
 
   def show
     payment = Payment.find params[:id]
@@ -15,6 +16,7 @@ class PaymentsController < ApplicationController
   def create
     payment = Payment.create! permitted_params
 
+    logger.info "Create CloudPayments payment #{payment.id}"
     redirect_to payment_path(payment)
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:error] = e.message
