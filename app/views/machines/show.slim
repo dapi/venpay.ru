@@ -6,5 +6,5 @@ nav.nav.flex-column
       h3= price.title
       = price.price.format
 
-- if account.is_test?
+- if account.is_test? && Rails.env.development?
   = render 'test_cards'
