@@ -2,9 +2,16 @@ label#label-qr-code НАВЕДИТЕ КАМЕРУ НА QR-КОД
 video#scan-qr-code[muted playsinline]
 
 javascript:
-  var video = document.getElementById('scan-qr-code');
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var video = document.getElementById('scan-qr-code');
 
-  QrScanner.hasCamera().then(hasCamera => (hasCamera ? console.log('Камера найдена') : alert('Камера не найдена')));
+    QrScanner.
+      hasCamera().
+      then(hasCamera => (hasCamera ? console.log('Камера найдена') : alert('Камера не найдена')));
 
-  var scanner = new QrScanner(video, result => (document.location.href = result));
-  scanner.start();
+    // TODO Проверять result
+    // Если это не ссылка - так и писать
+    // Если это НЕ ссылка на venpay - так и писать
+    var scanner = new QrScanner(video, result => (document.location.href = result));
+    scanner.start();
+  });
