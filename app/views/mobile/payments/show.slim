@@ -10,6 +10,7 @@ javascript:
         amount: #{payment.total_price.to_f},
         currency: #{payment.total_price_currency.to_s.to_json.html_safe},
         invoiceId: #{payment.id.to_json.html_safe},
+        googlePaySupport: false,
         },
         #{success_payment_url(payment).to_json.html_safe},
         #{fail_payment_url(payment).to_json.html_safe}
