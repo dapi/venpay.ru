@@ -1,0 +1,9 @@
+h1 Аппарат #{machine.public_number}
+hr
+p Состояние: #{humanized_state result}
+
+a[data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse"] Подробнее
+
+div.collapse.mt-2#collapse
+  pre
+    code=JSON.pretty_generate(result)

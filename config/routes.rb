@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
 
-  scope module: 'admin' do
-    resources :machines do
-      member do
-        get 'status'
-      end
-    end
+  namespace :admin do
+    root to: 'machines#index'
+    resources :machines
   end
 
   scope module: 'mobile' do
