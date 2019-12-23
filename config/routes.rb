@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   default_url_options Settings.default_url_options.symbolize_keys
 
-  root to: 'machines#index'
+  root to: 'welcome#index'
   get '/m/:slug', to: 'machines#show', as: :slug
 
   resources :machines do
