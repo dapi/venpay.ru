@@ -1,0 +1,4 @@
+script src="//d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js"
+script
+  | window.bugsnagClient = bugsnag(#{raw bugsnag_options.to_json});
+  | window.bugsnagClient.user = #{raw bugsnag_user};

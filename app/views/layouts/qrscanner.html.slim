@@ -2,5 +2,9 @@ doctype html
 html
   head
     = render 'layouts/mobile/head'
+    link rel="dns-prefetch" href="//widget.cloudpayments.ru"
+    link rel="prefetch" href='https://widget.cloudpayments.ru/bundles/cloudpayments' as="script"
+    = stylesheet_pack_tag 'qrscanner', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'qrscanner', 'data-turbolinks-track': 'reload'
   body
     = yield
