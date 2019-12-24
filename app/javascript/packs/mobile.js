@@ -1,8 +1,10 @@
-require("@rails/ujs").start()
+// require("@rails/ujs").start()
 import bugsnag from '@bugsnag/js'
 import 'bootstrap/dist/css/bootstrap'
 import './mobile/qr-scanner.sass'
 import QrScanner from 'qr-scanner/qr-scanner.min.js'
+
+// Лежит в public/
 QrScanner.WORKER_PATH = 'qr_scanner/qr-scanner-worker.min.js'
 window.QrScanner = QrScanner
 window.bugsnagClient = bugsnag('12924e72e422ebbba11c70db0f708e95')
