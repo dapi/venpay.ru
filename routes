@@ -1,17 +1,19 @@
 Log outgoing HTTP requests in ruby
 Включаю HttpLog в ./log/http_outcome.log
                                Prefix Verb   URI Pattern                                                                              Controller#Action
-                             machines GET    /admin/machines(.:format)                                                                machines#index
-                                      POST   /admin/machines(.:format)                                                                machines#create
-                          new_machine GET    /admin/machines/new(.:format)                                                            machines#new
-                         edit_machine GET    /admin/machines/:id/edit(.:format)                                                       machines#edit
-                              machine GET    /admin/machines/:id(.:format)                                                            machines#show
-                                      PATCH  /admin/machines/:id(.:format)                                                            machines#update
-                                      PUT    /admin/machines/:id(.:format)                                                            machines#update
-                                      DELETE /admin/machines/:id(.:format)                                                            machines#destroy
+                           admin_root GET    /admin(.:format)                                                                         admin/machines#index
+                admin_machine_actions POST   /admin/machines/:machine_id/actions(.:format)                                            admin/actions#create
+                       admin_machines GET    /admin/machines(.:format)                                                                admin/machines#index
+                                      POST   /admin/machines(.:format)                                                                admin/machines#create
+                    new_admin_machine GET    /admin/machines/new(.:format)                                                            admin/machines#new
+                   edit_admin_machine GET    /admin/machines/:id/edit(.:format)                                                       admin/machines#edit
+                        admin_machine GET    /admin/machines/:id(.:format)                                                            admin/machines#show
+                                      PATCH  /admin/machines/:id(.:format)                                                            admin/machines#update
+                                      PUT    /admin/machines/:id(.:format)                                                            admin/machines#update
+                                      DELETE /admin/machines/:id(.:format)                                                            admin/machines#destroy
                                  root GET    /                                                                                        mobile/welcome#index
                                  slug GET    /m/:slug(.:format)                                                                       mobile/machines#show
-                                      GET    /machines/:id(.:format)                                                                  mobile/machines#show
+                              machine GET    /machines/:id(.:format)                                                                  mobile/machines#show
                       success_payment GET    /payments/:id/success(.:format)                                                          mobile/payments#success
                          fail_payment GET    /payments/:id/fail(.:format)                                                             mobile/payments#fail
                              payments GET    /payments(.:format)                                                                      mobile/payments#index

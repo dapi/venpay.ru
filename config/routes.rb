@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'machines#index'
-    resources :machines
+    resources :machines do
+      resources :actions, only: [:create]
+    end
   end
 
   scope module: 'mobile' do
