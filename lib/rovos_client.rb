@@ -11,6 +11,9 @@ class RovosClient
   READ_TIMEOUT = 5
   HEADER = { 'User-Agent' => 'RovosClient (ruby) v0.1.0' }
 
+  Error = Class.new StandardError
+  NotFound = Class.new Error
+
   def initialize(host, ssl: {})
     @host = host
     @ssl = ssl
@@ -43,7 +46,13 @@ class RovosClient
   CONTENT_TYPE = 'application/json'.freeze
 
   def validate_response!(response, status)
-    raise "Wrong response status #{response.status}" unless response.status == status
+    unless response.status == status
+      if response.status == 404
+        raise NotFound, 'Not found'
+      else
+        raise Error, "Wrong response status #{response.status}"
+      end
+    end
     content_type = response.headers['Content-Type']
     raise "Content-Type must be #{CONTENT_TYPE} (#{content_type})" unless content_type == CONTENT_TYPE
   end
