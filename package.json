@@ -10,6 +10,7 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "qr-scanner": "^1.1.1",
+    "raw-loader": "^4.0.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

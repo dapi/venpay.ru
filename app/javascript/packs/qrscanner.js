@@ -1,8 +1,12 @@
 import './mobile/qr-scanner.sass'
 import QrScanner from 'qr-scanner/qr-scanner.min.js'
 
+import workerAsString from '!!raw-loader!qr-scanner/qr-scanner-worker.min'
+const workerUrl = window.URL.createObjectURL(new Blob([workerAsString]))
+QrScanner.WORKER_PATH = workerUrl
 // Лежит в public/
-QrScanner.WORKER_PATH = 'qr_scanner/qr-scanner-worker.min.js'
+// QrScanner.WORKER_PATH = 'qr_scanner/qr-scanner-worker.min.js'
+
 window.QrScanner = QrScanner
 
 document.addEventListener("DOMContentLoaded", function(event) {
