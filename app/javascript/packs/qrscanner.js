@@ -20,9 +20,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   const onFailure = (e) => {
-    bugsnagClient.notify(new Error('Ошибка подключения камеры'))
-    alert('Ошибка подключения камеры')
     console.log('Ошибка подключения камеры', e)
+    if (e) {
+      bugsnagClient.notify(e)
+    } else {
+      bugsnagClient.notify(new Error('Ошибка подключения камеры'))
+    }
+    alert('Ошибка подключения камеры')
   }
 
   QrScanner.
