@@ -4,9 +4,10 @@ p Принята оплата в размере #{payment.total_price.format}
 address #{humanized_machine payment.machine}
 p Присаживайтесь, через несколько секунд кресло включится на #{payment.price.title}.
 
-.progress
-  .progress-bar.progress-bar-striped.progress-bar-animated[role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"] 75%
-
-.mt-4.alert.alert-warning Прогресс-бар временно не работает
+- if Rails.env.development?
+  .progress
+    .progress-bar.progress-bar-striped.progress-bar-animated[role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"] 75%
+  .mt-4.alert.alert-warning Прогресс-бар временно не работает
 
 = home_button
+= render 'install'

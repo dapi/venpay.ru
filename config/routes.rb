@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: 'mobile' do
     root to: 'welcome#index'
+    get :install, to: 'welcome#install'
     get '/m/:slug', to: 'machines#show', as: :slug
 
     resources :machines, only: [:show]
