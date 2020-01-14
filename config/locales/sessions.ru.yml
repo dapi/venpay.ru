@@ -1,0 +1,8 @@
+---
+ru:
+  sessions:
+    form:
+      reset_password: Напомнить пароль
+    nav:
+      signin: Вход
+      signup: Регистрация

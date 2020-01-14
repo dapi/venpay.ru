@@ -1,0 +1,28 @@
+---
+ru:
+  helpers:
+    buttons:
+      archive: Архивировать
+      delete: Удалить
+      invite: Пригласить участника
+      settings: Настройки
+    confirm_delete: Удаляем насовсем?
+    disable_with: Понеслась..
+    gravatar_hint: Используйте http://gravatar.com для загрузки аватарки
+    invalid_authenticity_token: Просрочен токен аутентификации, авторизуйтесь снова
+    select:
+      prompt: 'Выберите: '
+    submit:
+      create: Создать %{model}
+      invite_form:
+        create: Пригласить
+      password_reset:
+        create: Напомнить
+      submit: Сохранить изменения
+      update: Сохранить изменения
+      user:
+        create: Зарегистрироваться
+        update: Сохранить
+      user_session:
+        create: Войти
+    warning: Внимание!

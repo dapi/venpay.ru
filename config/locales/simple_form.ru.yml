@@ -1,0 +1,39 @@
+---
+ru:
+  simple_form:
+    error_notification:
+      blank: Не может быть пустым
+      default_message: Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них
+    hints:
+      invite_form:
+        account: Аккаунт
+        emails: Список емайлов, разделенный переводом строки, запятою или пробелом
+      password_reset:
+        email: Введите свой емайл и мы отправим инструкцию для восстановления
+      user:
+        access_key: Указывается в HTTP заголовке X-Access-Key
+        password: Оставьте пустым чтобы не менять
+    labels:
+      board:
+        title: Наименование доски
+      defaults:
+        locale: Язык
+        password: Пароль
+        title: Название
+      invite_form:
+        emails: Список емайлов для приглашения
+      user:
+        email: Емайл
+        name: Ваше имя
+        new:
+          email: Емайл (для входа)
+      user_session:
+        login: Логин (email)
+    'no': нет
+    placeholders:
+      board:
+        title: Мой проект
+    required:
+      mark: "*"
+      text: обязательное поле
+    'yes': да

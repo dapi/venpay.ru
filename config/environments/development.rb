@@ -61,4 +61,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.hosts << ENV["APP_HOST"]
+  config.hosts << '94.232.57.6'
 end

@@ -43,6 +43,8 @@ gem 'simple_form'
 gem 'auto_logger'
 gem 'pagy'
 gem 'sorcery'
+gem 'virtus'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'httplog'
