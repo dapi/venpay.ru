@@ -42,6 +42,7 @@ gem 'active_link_to'
 gem 'simple_form'
 gem 'auto_logger'
 gem 'pagy'
+gem 'sorcery'
 
 group :development, :test do
   gem 'httplog'

@@ -10,9 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_125928) do
+ActiveRecord::Schema.define(version: 2020_01_14_181013) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
+  enable_extension "pg_buffercache"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
@@ -70,6 +72,24 @@ ActiveRecord::Schema.define(version: 2019_12_23_125928) do
     t.index ["account_id", "position"], name: "index_prices_on_account_id_and_position"
     t.index ["account_id", "title"], name: "index_prices_on_account_id_and_title", unique: true
     t.index ["account_id"], name: "index_prices_on_account_id"
+  end
+
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.citext "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.integer "access_count_to_reset_password_page", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
   add_foreign_key "machines", "accounts"
