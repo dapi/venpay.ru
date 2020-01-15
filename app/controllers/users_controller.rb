@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  skip_before_action :require_login
   before_action :validate_captcha, only: [:create] if Settings.use_captcha
   layout 'simple'
 
