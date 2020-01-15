@@ -12,7 +12,7 @@ account = Account.create_with(
   cloud_payments_api_key: Rails.application.credentials.cloud_payments_api_key
 ).find_or_create_by(title: 'ROVOS')
 
-account.machines.create_with(public_number: '1278', location: 'Офис Данила').find_or_create_by(internal_id: 100020003)
+account.machines.create_with(public_number: '1278', location: 'Офис').find_or_create_by(internal_id: 100020003)
 PRICES = [
   { work_time: 5, price: 50.to_money(:rub), position: 0, title: '5 минут' },
   { work_time: 10, price: 90.to_money(:rub), position: 1, title: '10 минут' },
@@ -22,3 +22,6 @@ PRICES = [
 PRICES.each do |price|
   account.prices.create_with(price: price[:price]).find_or_create_by(title: price[:title])
 end
+
+user = User.create!(email: 'admin@example.com', password: 'password')
+account.users << user

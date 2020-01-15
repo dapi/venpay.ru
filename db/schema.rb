@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_181013) do
+ActiveRecord::Schema.define(version: 2020_01_15_042835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2020_01_14_181013) do
     t.index ["internal_id"], name: "index_machines_on_internal_id", unique: true
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
     t.index ["slug"], name: "index_machines_on_slug", unique: true
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id", "user_id"], name: "index_memberships_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_memberships_on_account_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "payments", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -93,6 +103,8 @@ ActiveRecord::Schema.define(version: 2020_01_14_181013) do
   end
 
   add_foreign_key "machines", "accounts"
+  add_foreign_key "memberships", "accounts"
+  add_foreign_key "memberships", "users"
   add_foreign_key "payments", "machines"
   add_foreign_key "payments", "prices"
   add_foreign_key "prices", "accounts"
