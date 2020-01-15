@@ -8,6 +8,7 @@ cache:
 services:
 - postgresql
 before_install:
+- nvm install
 - gem update --no-document --remote bundler
 - yarn install
 before_script:
