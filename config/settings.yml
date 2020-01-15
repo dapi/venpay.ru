@@ -1,4 +1,6 @@
 defaults: &defaults
+  mailer:
+    from: venpay <no-reply@venpay.ru>
   front_bugsnag_api_key: '12924e72e422ebbba11c70db0f708e95'
   default_url_options: &default_url_options
     host: <%= ENV['APP_HOST'] || 'localhost' %>
