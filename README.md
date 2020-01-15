@@ -2,23 +2,23 @@
 
 [![Build Status](https://travis-ci.org/BrandyMint/venpay.ru.svg?branch=master)](https://travis-ci.org/BrandyMint/venpay.ru)
 
-Things you may want to cover:
+# Зависимости
 
-* Ruby version
+* postgresql 10+
+* redis (для sidekiq)
 
-* System dependencies
+# Запуск
 
-* Configuration
+```bash
+rvm install
+bundle
+rake db:setup
+rails s
+```
 
-* Database creation
+# Развертка
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+> cap production deploy
 
 # Создание сертификатов
 
