@@ -1,5 +1,7 @@
 # venpay.ru - Оплата вендинговых услуг через QR-код
 
+[![Build Status](https://travis-ci.org/BrandyMint/venpay.ru.svg?branch=master)](https://travis-ci.org/BrandyMint/venpay.ru)
+
 Things you may want to cover:
 
 * Ruby version
