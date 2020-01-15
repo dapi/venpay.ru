@@ -44,6 +44,7 @@ gem 'auto_logger'
 gem 'pagy'
 gem 'sorcery'
 gem 'virtus'
+gem 'valid_email'
 
 group :development, :test do
   gem 'httplog'
