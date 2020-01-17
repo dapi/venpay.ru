@@ -7,7 +7,7 @@ class Mobile::PaymentsController < ApplicationController
 
     if payment.paid?
       # TODO Убедиться что по этому платежу машину включали,если нет, то запустить процесс включения
-      render :success
+      render :success, locals: { payment: payment }
     else
       render locals: { payment: payment }
     end
