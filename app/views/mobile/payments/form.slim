@@ -1,0 +1,39 @@
+= javascript_include_tag 'https://widget.cloudpayments.ru/bundles/checkout'
+
+nav.nav.flex-column
+  form#paymentForm[autocomplete="off"]
+    input[type="text" data-cp="cardNumber"]
+    input[type="text" data-cp="expDateMonth"]
+    input[type="text" data-cp="expDateYear"]
+    input[type="text" data-cp="cvv"]
+    input[type="text" data-cp="name"]
+    button[type="submit"]
+      | Оплатить 100 р.
+
+
+javascript:
+  this.createCryptogram = function () {
+      var result = checkout.createCryptogramPacket();
+
+      if (result.success) {
+          // сформирована криптограмма
+          alert(result.packet);
+      }
+      else {
+          // найдены ошибки в введённых данных, объект `result.messages` формата: 
+          // { name: "В имени держателя карты слишком много символов", cardNumber: "Неправильный номер карты" }
+          // где `name`, `cardNumber` соответствуют значениям атрибутов `<input ... data-cp="cardNumber">`
+         for (var msgName in result.messages) {
+             alert(result.messages[msgName]);
+         }
+      }
+  };
+
+  $(function () {
+      /* Создание checkout */
+      checkout = new cp.Checkout(
+      // public id из личного кабинета
+      "test_api_00000000000000000000001",
+      // тег, содержащий поля данных карты
+      document.getElementById("paymentForm"));
+  });
