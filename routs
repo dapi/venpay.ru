@@ -1,0 +1,2 @@
+Log outgoing HTTP requests in ruby
+Включаю HttpLog в ./log/http_outcome.log

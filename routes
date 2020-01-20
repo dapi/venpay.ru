@@ -1,6 +1,16 @@
 Log outgoing HTTP requests in ruby
 Включаю HttpLog в ./log/http_outcome.log
                                Prefix Verb   URI Pattern                                                                              Controller#Action
+                             sessions DELETE /sessions(.:format)                                                                      sessions#destroy
+                                      POST   /sessions(.:format)                                                                      sessions#create
+                          new_session GET    /sessions/new(.:format)                                                                  sessions#new
+                                users POST   /users(.:format)                                                                         users#create
+                             new_user GET    /users/new(.:format)                                                                     users#new
+                      password_resets POST   /password_resets(.:format)                                                               password_resets#create
+                   new_password_reset GET    /password_resets/new(.:format)                                                           password_resets#new
+                  edit_password_reset GET    /password_resets/:id/edit(.:format)                                                      password_resets#edit
+                       password_reset PATCH  /password_resets/:id(.:format)                                                           password_resets#update
+                                      PUT    /password_resets/:id(.:format)                                                           password_resets#update
                            admin_root GET    /admin(.:format)                                                                         admin/machines#index
                 admin_machine_actions POST   /admin/machines/:machine_id/actions(.:format)                                            admin/actions#create
                        admin_machines GET    /admin/machines(.:format)                                                                admin/machines#index
@@ -12,6 +22,7 @@ Log outgoing HTTP requests in ruby
                                       PUT    /admin/machines/:id(.:format)                                                            admin/machines#update
                                       DELETE /admin/machines/:id(.:format)                                                            admin/machines#destroy
                                  root GET    /                                                                                        mobile/welcome#index
+                              install GET    /install(.:format)                                                                       mobile/welcome#install
                                  slug GET    /m/:slug(.:format)                                                                       mobile/machines#show
                               machine GET    /machines/:id(.:format)                                                                  mobile/machines#show
                       success_payment GET    /payments/:id/success(.:format)                                                          mobile/payments#success
