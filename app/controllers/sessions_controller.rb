@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     if login(user_session.login, user_session.password, true)
-      redirect_to accounts_url, success: t('flashes.welcome', name: current_user.public_name)
+      redirect_to admin_root_url, success: t('flashes.welcome', name: current_user.public_name)
     else
       render :new, locals: { user_session: user_session, message: t('flashes.wrong_credentials') }
     end
