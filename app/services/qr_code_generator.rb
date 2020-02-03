@@ -31,7 +31,7 @@ class QrCodeGenerator
       size:              120
     )
 
-    IO.write(DIR.join(qr_code_path(:png)).to_s, png.to_s)
+    IO.write(dir.join(qr_code_path(:png)).to_s, png.to_s)
   end
 
   def generate_svg
@@ -42,7 +42,7 @@ class QrCodeGenerator
       module_size:     6,
       standalone:      true
     )
-    IO.write(DIR.join(qr_code_path(:svg)).to_s, svg.to_s)
+    IO.write(dir.join(qr_code_path(:svg)).to_s, svg.to_s)
   end
 
   def qr_code_url
@@ -55,6 +55,11 @@ class QrCodeGenerator
   end
 
   private
+
+  def dir
+    FileUtils.mkdir DIR unless Dir.exists? DIR
+    DIR
+  end
 
   def qrcode
     @qrcode ||= RQRCode::QRCode.new( @url, size: 2, level: :m)
