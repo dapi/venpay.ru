@@ -1,5 +1,4 @@
-class Mobile::PaymentsController < ApplicationController
-  layout 'mobile'
+class Mobile::PaymentsController < Mobile::ApplicationController
   include AutoLogger
 
   def show

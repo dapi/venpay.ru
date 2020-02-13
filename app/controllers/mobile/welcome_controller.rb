@@ -1,7 +1,7 @@
-class Mobile::WelcomeController < ApplicationController
-  layout 'qrscanner'
+class Mobile::WelcomeController < Mobile::ApplicationController
+  layout 'mobile'
 
-  def install
-    render layout: 'mobile'
+  def scanner
+    render layout: 'qrscanner'
   end
 end
