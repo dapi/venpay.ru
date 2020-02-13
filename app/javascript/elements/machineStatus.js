@@ -1,20 +1,18 @@
-import Rails from "@rails/ujs"
-
 class MachineStatus extends HTMLElement {
   connectedCallback() {
     this.refresh()
   }
 
   handleRefreshClick = ({target}) => {
-    Rails.disableElement(target);
     this.refresh()
   }
 
   refresh = () => {
+    this.innerHTML='<dapi-spinner></dapi-spinner>'
     const onLoad = (response) => {
       this
-      .querySelector('[data-refresh]')
-      .addEventListener('click', this.handleRefreshClick)
+        .querySelector('[data-refresh]')
+        .addEventListener('click', this.handleRefreshClick)
     }
     $(this).load(this.dataset.url, onLoad)
   }
