@@ -27,12 +27,6 @@ rails s
 3. ruby rack puma (15 секунд) -> rovos broker server (rack ruby eventmachine) - !!!
 4. rovos broker server (7 секунды) (TCP/IP / GSM) -> вендинговая машина (STM)
 
-# Валидация формы
-
-1. Валидация в браузере. Формат поля, requirement, уникальный (???).
-2. Валидация на сервере. Формат поле, requirement, уникальный (!!!).
-3. Валидация в SQL (наличие полей, на уникальность) (!!!!)
-
 # Создание сертификатов
 
 > cd ./config/certs/
