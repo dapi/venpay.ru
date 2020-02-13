@@ -1,8 +1,14 @@
 
 class MachineStatus extends HTMLElement {
   connectedCallback() {
-    const onLoad = (e) => {
-      console.log('onLoad')
+    this.refresh()
+  }
+
+  refresh = () => {
+    const onLoad = (response) => {
+      this
+      .querySelector('[data-refresh]')
+      .addEventListener('click', this.refresh )
     }
     $(this).load(this.dataset.url, onLoad)
   }
