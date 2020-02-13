@@ -1,10 +1,8 @@
-h1 Аппарат #{machine.public_number}
+h1 Аппарат #{public_number machine.public_number}
 hr
 
 .row
   .col-md-6
-    dapi-machine-status[data-id=machine.id data-url=status_admin_machine_path(machine.id)]
+    dapi-machine-status{ data-url=status_admin_machine_path(machine.id) }
   .col-md-6
-    = simple_form_for form, url: admin_machine_actions_path(machine), method: :post do |f|
-      = f.input :time, label: 'Количество минут на которое запустить кресло', input_html: { autofocus: true }
-      = f.button :submit, class: 'btn btn-primary', value: 'Старт'
+    = render 'admin/actions/form', machine: machine, form: form

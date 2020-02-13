@@ -1,11 +1,16 @@
 class Admin::ActionsController < Admin::ApplicationController
   def create
+    raise 'xhr only' unless request.xhr?
     machine = Machine.find params[:machine_id]
-    result = RovosClient.build.post('/machines/' + machine.internal_id.to_s, state: 2, work_time: params.fetch(:start_form).fetch(:time))
-    render 'admin/machines/show', locals: {
-      machine: machine,
-      result:  result,
-      form:    StartForm.new(time: 5)
-    }
+    form = StartForm.new params.fetch(:start_form).permit!
+    RovosClient
+      .build
+      .post('/machines/' + machine.internal_id.to_s,
+            state: 2,
+            work_time: form.time)
+
+    render locals: { machine: machine, message: 'Устройство запущено', form: StartForm.new }, layout: false
+  rescue Faraday::TimeoutError, Faraday::ClientError, RovosClient::Error => error
+    render locals: { machine: machine, message: error, form: form }, layout: false
   end
 end

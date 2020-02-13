@@ -3,15 +3,11 @@ class Admin::MachinesController < Admin::ApplicationController
   end
 
   def show
-    render locals: {
-      machine: machine,
-      form: StartForm.new(time: 5)
-    }
+    render locals: { machine: machine, form: StartForm.new }
   end
 
   def status
     raise 'xhr only' unless request.xhr?
-
     result = RovosClient.build.post('/machines/' + machine.internal_id.to_s, state: 4)
     render locals: { result: result }, layout: false
   rescue Faraday::TimeoutError => error
