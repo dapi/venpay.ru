@@ -1,3 +1,3 @@
 = simple_form_for form, url: machines_path, method: :post do |f|
-  = f.input :machine_number, label: 'Номер кресла', input_html: { autofocus: true }
+  = f.input :machine_number, label: 'Номер кресла', hint: 'Например: 127-801', input_html: { autofocus: true }
   = f.button :submit, class: 'btn btn-primary', value: 'Продолжить', disable_with: 'В процессе..'
