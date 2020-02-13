@@ -12,6 +12,7 @@ Log outgoing HTTP requests in ruby
                        password_reset PATCH  /password_resets/:id(.:format)                                                           password_resets#update
                                       PUT    /password_resets/:id(.:format)                                                           password_resets#update
                            admin_root GET    /admin(.:format)                                                                         admin/machines#index
+                 status_admin_machine GET    /admin/machines/:id/status(.:format)                                                     admin/machines#status
                 admin_machine_actions POST   /admin/machines/:machine_id/actions(.:format)                                            admin/actions#create
                        admin_machines GET    /admin/machines(.:format)                                                                admin/machines#index
                                       POST   /admin/machines(.:format)                                                                admin/machines#create

@@ -7,8 +7,8 @@ require 'net/http'
 # rovos = RovosClient.new('http://localhost:8080', 'secret')
 # rovos.post('/machines/100020003', state: 4)
 class RovosClient
-  OPEN_TIMEOUT = 2
-  READ_TIMEOUT = 5
+  OPEN_TIMEOUT = 1
+  READ_TIMEOUT = 2
   HEADER = { 'User-Agent' => 'RovosClient (ruby) v0.1.0' }
 
   Error = Class.new StandardError
