@@ -14,6 +14,10 @@ class Admin::MachinesController < Admin::ApplicationController
 
     result = RovosClient.build.post('/machines/' + machine.internal_id.to_s, state: 4)
     render locals: { result: result }, layout: false
+  rescue Faraday::TimeoutError => error
+    render :status_timeout, layout: false
+  rescue Faraday::ClientError => error
+    render :status_error, locals: { error: error }, layout: false
   rescue RovosClient::Error => error
     render :status_error, locals: { error: error }, layout: false
   end
