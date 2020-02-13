@@ -1,0 +1,6 @@
+.float-right= render 'refresh_button'
+p Состояние: #{humanized_state result}
+a[data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse"] Подробнее
+div.collapse.mt-2#collapse
+  pre
+    code=JSON.pretty_generate(result)

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'machines#index'
     resources :machines do
+      member do
+        get :status
+      end
       resources :actions, only: [:create]
     end
   end

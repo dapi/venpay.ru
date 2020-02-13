@@ -20,6 +20,13 @@ rails s
 
 > cap production deploy
 
+# Процесс обработки запроса
+
+1. Браузер HTTP (1 минута) -> caddy
+2. Caddy (front web server) (30 сек) -> application web server (ruby rack puma)
+3. ruby rack puma (15 секунд) -> rovos broker server (rack ruby eventmachine) - !!!
+4. rovos broker server (7 секунды) (TCP/IP / GSM) -> вендинговая машина (STM)
+
 # Создание сертификатов
 
 > cd ./config/certs/
