@@ -16,9 +16,7 @@ class Admin::MachinesController < Admin::ApplicationController
     render locals: { result: result }, layout: false
   rescue Faraday::TimeoutError => error
     render :status_timeout, layout: false
-  rescue Faraday::ClientError => error
-    render :status_error, locals: { error: error }, layout: false
-  rescue RovosClient::Error => error
+  rescue Faraday::ClientError, RovosClient::Error => error
     render :status_error, locals: { error: error }, layout: false
   end
 
