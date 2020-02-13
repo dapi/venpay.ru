@@ -254,4 +254,5 @@ ru:
       default: "%a, %d %b %Y, %H:%M:%S %z"
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
+      short_with_seconds: "%d %b, %H:%M:%S"
     pm: вечера
