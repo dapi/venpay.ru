@@ -6,7 +6,7 @@ class Admin::ActionsController < Admin::ApplicationController
     RovosClient
       .build
       .post('/machines/' + machine.internal_id.to_s,
-            state: 2,
+            state: 2, # Start command
             work_time: form.time)
 
     render locals: { machine: machine, message: 'Устройство запущено', form: StartForm.new }, layout: false
