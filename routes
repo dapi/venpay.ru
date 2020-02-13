@@ -23,8 +23,11 @@ Log outgoing HTTP requests in ruby
                                       PUT    /admin/machines/:id(.:format)                                                            admin/machines#update
                                       DELETE /admin/machines/:id(.:format)                                                            admin/machines#destroy
                                  root GET    /                                                                                        mobile/welcome#index
+                              scanner GET    /scanner(.:format)                                                                       mobile/welcome#scanner
                               install GET    /install(.:format)                                                                       mobile/welcome#install
                                  slug GET    /m/:slug(.:format)                                                                       mobile/machines#show
+                             machines POST   /machines(.:format)                                                                      mobile/machines#create
+                          new_machine GET    /machines/new(.:format)                                                                  mobile/machines#new
                               machine GET    /machines/:id(.:format)                                                                  mobile/machines#show
                       success_payment GET    /payments/:id/success(.:format)                                                          mobile/payments#success
                          fail_payment GET    /payments/:id/fail(.:format)                                                             mobile/payments#fail

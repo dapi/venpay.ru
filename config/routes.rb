@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
   scope module: 'mobile' do
     root to: 'welcome#index'
+    get :scanner, to: 'welcome#scanner'
     get :install, to: 'welcome#install'
     get '/m/:slug', to: 'machines#show', as: :slug
-
-    resources :machines, only: [:show]
+    resources :machines, only: [:show, :new, :create]
     resources :payments do
       member do
         get 'success'

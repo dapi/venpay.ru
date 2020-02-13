@@ -1,5 +1,18 @@
-class Mobile::MachinesController < ApplicationController
-  def index
+class Mobile::MachinesController < Mobile::ApplicationController
+  # Форма выбора кресла
+  #
+  def new
+    render locals: { form: SelectMachineForm.new }
+  end
+
+  # Выбор кресла
+  def create
+    form = SelectMachineForm.new params[:select_machine_form].permit!
+    if form.valid?
+      redirect_to machine_path form.machine
+    else
+      render :new, locals: { form: form }
+    end
   end
 
   def status
