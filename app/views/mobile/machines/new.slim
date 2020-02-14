@@ -1,6 +1,6 @@
 = simple_form_for form, url: machines_path, method: :post do |f|
   = f.input :machine_number, 
-    label: 'Номер кресла', 
+    label: 'Введите номер кресла', 
     placeholder: 'XXX-XXX', 
     hint: 'Например: 127-801', 
     input_html: { autofocus: true, required: true, maxlength: 7, size: 7 }

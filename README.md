@@ -22,10 +22,10 @@ rails s
 
 # Процесс обработки запроса
 
-1. Браузер HTTP (1 минута) -> caddy
-2. Caddy (front web server) (30 сек) -> application web server (ruby rack puma)
-3. ruby rack puma (15 секунд) -> rovos broker server (rack ruby eventmachine) - !!!
-4. rovos broker server (7 секунды) (TCP/IP / GSM) -> вендинговая машина (STM)
+1. Браузер HTTP (5 минута в хроме)
+2. Caddy (Front Web Server) (30 сек ?) -> Application Web Server (Ruby Rack Puma)
+3. Ruby Rack Puma (15 секунд) -> Rovos Broker Server (Rack Ruby Eventmachine) - !!!
+4. Rovos Broker Server (7 секунды) (TCP/IP / GSM) -> вендинговая машина (STM)
 
 # Создание сертификатов
 
