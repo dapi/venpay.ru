@@ -9,6 +9,7 @@ class Machine < ApplicationRecord
   validates :public_number, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
   validates :adapter_class, presence: true, inclusion: { in: AVAILABLE_ADAPTERS.map(&:to_s) }
+  validates :phone, phone: { allow_blank: true }
 
   before_validation on: :create do
     self.slug ||= SecureRandom.hex(3)
