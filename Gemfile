@@ -27,7 +27,7 @@ gem 'turbolinks', '~> 5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'nokogiri-happymapper'
 gem 'slim-rails'
 gem 'money-rails'
 gem 'workflow'

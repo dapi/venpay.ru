@@ -1,2 +1,2 @@
-class SmsAdapter
+class SmsAdapter < ApplicationAdapter
 end
