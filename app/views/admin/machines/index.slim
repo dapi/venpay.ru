@@ -21,15 +21,18 @@ hr
   table.table
     thead
       tr
-        th Публичный номер машины
+        th Номер машины
         th Адрес установки
+        th Телефон
         th QR Код
         th Действия
     - account.machines.order(:public_number).each do |machine|
       tr
         td
           h3= public_number machine.public_number
+          .text-muted= machine.internal_id
         td= machine.location
+        td= machine.phone.presence || '-'
         td
           = link_to qr_code_url(machine), target: '_blank' do
             = image_tag qr_code_url(machine)
