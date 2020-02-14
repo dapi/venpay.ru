@@ -17,13 +17,13 @@ class Machine < ApplicationRecord
     self.slug ||= SecureRandom.hex(3)
   end
 
-  after_commit on: :create do
-    QrCodeGenerator.for_machine(self).generate_svg
-  end
+  after_commit :generate_qr_code, on: :create
 
   def adapter
-    adapter_class
-      .constantize
-      .new(self)
+    adapter_class.constantize.new(self)
+  end
+
+  def generate_qr_code
+    QrCodeGenerator.for_machine(self).generate_svg
   end
 end
