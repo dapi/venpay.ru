@@ -205,6 +205,9 @@ GEM
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
+    nilify_blanks (1.3.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
@@ -219,6 +222,7 @@ GEM
       rack (>= 1.2, < 3)
     pagy (3.5.1)
     pg (1.1.4)
+    phonelib (0.6.40)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -388,9 +392,11 @@ DEPENDENCIES
   httplog
   listen (>= 3.0.5, < 3.2)
   money-rails
+  nilify_blanks
   nokogiri-happymapper
   pagy
   pg (>= 0.18, < 2.0)
+  phonelib
   pry
   pry-byebug
   pry-rails

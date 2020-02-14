@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class Machine < ApplicationRecord
+  nilify_blanks
+
   AVAILABLE_ADAPTERS = [RovosAdapter, SmsAdapter]
 
   belongs_to :account
