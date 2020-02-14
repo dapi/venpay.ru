@@ -62,6 +62,6 @@ class QrCodeGenerator
   end
 
   def qrcode
-    @qrcode ||= RQRCode::QRCode.new( @url, size: 2, level: :m)
+    @qrcode ||= RQRCode::QRCode.new( @url, size: 3, level: :m)
   end
 end
