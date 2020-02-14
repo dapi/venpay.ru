@@ -34,9 +34,9 @@ class Mobile::PaymentsController < Mobile::ApplicationController
     # 3. Если машину еще не включали, то включить:
     #
     ## Включение машины
+
+    machine.agent.start price.work_time
     #
-    #   response = RovosClient.build.post("/machines/#{machine.internal_id}", state: 2, work_time: price.work_time)
-    #   # => {"sent"=>{"header"=>17271, "state"=>2, "work_time"=>10, "time_left"=>0, "machine_id"=>100020003}, "received"=>{"header"=>17271, "state"=>2, "work_time"=>10, "time_left"=>2560, "machine_id"=>100020003}}
     #
     # 2. Убедиться что машина включилась. Для этого нужно ловить exception.
     # 3. Логировать в Rails.logger что машину включили и результат (response)

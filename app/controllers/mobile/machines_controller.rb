@@ -15,12 +15,6 @@ class Mobile::MachinesController < Mobile::ApplicationController
     end
   end
 
-  def status
-    machine = Machine.find params[:id]
-    result = RovosClient.build.post('/machines/' + machine.internal_id.to_s, state: 4)
-    render locals: { machine: machine, result: result }
-  end
-
   def show
     machine = params[:id].present? ? Machine.find(params[:id]) : Machine.find_by!(slug: params[:slug])
     prices = machine.account.prices.order('position desc')
