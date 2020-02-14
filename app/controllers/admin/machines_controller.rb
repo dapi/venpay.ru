@@ -8,7 +8,7 @@ class Admin::MachinesController < Admin::ApplicationController
 
   def status
     raise 'xhr only' unless request.xhr?
-    result = machine.agent.status
+    result = machine.adapter.status
     render locals: { result: result }, layout: false
   rescue ApplicationAdapter::Error => error
     render :status_error, locals: { error: error }, layout: false

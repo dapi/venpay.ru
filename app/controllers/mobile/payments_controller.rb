@@ -35,7 +35,7 @@ class Mobile::PaymentsController < Mobile::ApplicationController
     #
     ## Включение машины
 
-    machine.agent.start price.work_time
+    machine.adapter.start price.work_time
     #
     #
     # 2. Убедиться что машина включилась. Для этого нужно ловить exception.

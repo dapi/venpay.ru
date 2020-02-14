@@ -11,7 +11,7 @@ class NotificationsController < ApplicationController
     ).notify_success
 
     logger.info "CloudPayments success #{result}"
-    response = machine.agent.start payment.price.work_time
+    response = machine.adapter.start payment.price.work_time
     logger.info "Agent response #{response}"
     render json: result
   end
