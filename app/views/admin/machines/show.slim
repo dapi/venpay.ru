@@ -1,6 +1,4 @@
-h1 Аппарат #{public_number machine.public_number}
-hr
-
+= render 'header', machine: machine
 .row
   .col-md-6
     dapi-machine-status{ data-url=status_admin_machine_path(machine.id) }

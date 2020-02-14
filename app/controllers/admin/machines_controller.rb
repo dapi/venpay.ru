@@ -2,6 +2,17 @@ class Admin::MachinesController < Admin::ApplicationController
   def index
   end
 
+  def edit
+    render locals: { machine: machine }
+  end
+
+  def update
+    machine.update params.require(:machine).permit!
+    redirect_to admin_machine_path(machine)
+  rescue ActiveRecord::RecordInvalid => err
+    render :edit, locals: { machine: err.record }
+  end
+
   def show
     render locals: { machine: machine, form: StartForm.new }
   end

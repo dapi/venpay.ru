@@ -1,0 +1,9 @@
+= simple_form_for [:admin, machine] do |f|
+  .row
+    .col-md-6
+      = f.input :public_number
+      = f.input :internal_id
+    .col-md-6
+      = f.input :phone
+  hr
+  = f.button :submit, class: 'btn btn-primary', value: 'Сохранить', disable_with: 'В процессе..'

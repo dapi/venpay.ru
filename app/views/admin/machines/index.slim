@@ -38,5 +38,6 @@ hr
             = image_tag qr_code_url(machine)
         td
           ul.list-inline
-            li.list-inline-item= link_to 'Оплата', slug_path(machine.slug)
+            li.list-inline-item= link_to 'Оплатить', slug_path(machine.slug)
+            li.list-inline-item= link_to 'Изменить', edit_admin_machine_path(machine)
             li.list-inline-item= link_to 'Статус', admin_machine_path(machine)

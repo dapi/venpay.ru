@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get :scanner, to: 'welcome#scanner'
     get :install, to: 'welcome#install'
     get '/m/:slug', to: 'machines#show', as: :slug
-    resources :machines, only: [:show, :new, :create]
+    resources :machines
     resources :payments do
       member do
         get 'success'
