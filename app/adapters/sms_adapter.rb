@@ -4,6 +4,7 @@ class SmsAdapter < ApplicationAdapter
   end
 
   def start(time)
+    raise ApplicationAdapter::Error, 'Phone must be presene' if machine.phone.blank?
     SmsService.call(machine.phone)
   end
 end
