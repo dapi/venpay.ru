@@ -14,7 +14,9 @@ class RovosAdapter < ApplicationAdapter
       .post('/machines/' + machine.internal_id.to_s,
             state: 2, # Start command
             work_time: time)
+    log_success_acitity time
   rescue Faraday::TimeoutError, Faraday::ClientError, RovosClient::Error => err
+    log_failed_acivity time, err
     raise ApplicationAdapter::Error, err
   end
 end
