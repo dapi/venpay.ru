@@ -77,6 +77,13 @@ group :development do
   gem 'capistrano-shell', require: false
   gem 'capistrano-yarn', require: false
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+
+  gem 'terminal-notifier-guard' # , '~> 1.6.1', require: darwin_only('terminal-notifier-guard')
+
+  gem 'guard'
+
+  gem 'guard-ctags-bundler'
+  gem 'guard-minitest'
 end
 
 group :test do
