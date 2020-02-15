@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  layout 'simple'
-
   def new
     render locals: { user_session: UserSession.new, message: nil }
   end

@@ -2,7 +2,6 @@
 
 class UsersController < ApplicationController
   before_action :validate_captcha, only: [:create] if Settings.use_captcha
-  layout 'simple'
 
   def new
     render locals: { user: user }
