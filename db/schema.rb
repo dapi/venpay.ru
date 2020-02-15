@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_190006) do
+ActiveRecord::Schema.define(version: 2020_02_15_171302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2020_02_14_190006) do
     t.string "encrypted_cloud_payments_api_key_iv"
     t.boolean "is_test", default: true, null: false
     t.index ["title"], name: "index_accounts_on_title", unique: true
+  end
+
+  create_table "activities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "machine_id", null: false
+    t.string "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["machine_id"], name: "index_activities_on_machine_id"
   end
 
   create_table "machines", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
@@ -104,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_02_14_190006) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "activities", "machines"
   add_foreign_key "machines", "accounts"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"

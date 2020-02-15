@@ -6,6 +6,7 @@ class Machine < ApplicationRecord
   AVAILABLE_ADAPTERS = [RovosAdapter, SmsAdapter]
 
   belongs_to :account
+  has_many :activities
 
   validates :internal_id, presence: true, uniqueness: true
   validates :public_number, presence: true, uniqueness: true
