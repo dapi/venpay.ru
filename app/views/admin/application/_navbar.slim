@@ -1,0 +1,21 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.flex-column.flex-md-row.sticky-top[style="background-color: #e3f2fd;"]
+  .container
+    a.navbar-brand( href=root_url ) VENPAY
+    button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigation"]
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        = active_link_to admin_machines_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' do
+          -# span.mr-2= icon 'md-arrow-back'
+          = t '.machines'
+      ul.navbar-nav.navbar-right
+        li.nav-item.dropdown
+          = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do
+            = gravatar_tag current_user,
+              size: 32
+            span.ml-2
+              span= current_user.name
+          .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdown"]
+            = link_to t('.profile'), profile_url, class: 'dropdown-item', data: { toggle: :remoteModal, target: '#remoteModal', url: profile_url(back_url: request.url) }
+            .dropdown-divider
+            = link_to t('.logout'), sessions_url, method: :delete, class: 'dropdown-item'

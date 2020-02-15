@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %i[new create]
-  # resource :profile, only: %i[show update], controller: :profile
+  resource :profile, only: %i[show update], controller: :profile
   resources :password_resets, only: %i[new create edit update]
 
   namespace :admin do

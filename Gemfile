@@ -47,6 +47,7 @@ gem 'pagy'
 gem 'sorcery'
 gem 'virtus'
 gem 'valid_email'
+gem 'gravatarify'
 
 group :development, :test do
   gem 'httplog'
