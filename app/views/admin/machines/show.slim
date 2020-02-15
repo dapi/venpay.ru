@@ -4,3 +4,6 @@
     dapi-machine-status{ data-url=status_admin_machine_path(machine.id) }
   .col-md-6
     = render 'admin/actions/form', machine: machine, form: form
+
+.mt-4
+  = render 'activities', machine: machine

@@ -1,0 +1,9 @@
+- if machine.activities.any?
+  h3.mb-3 Журнал
+  table.table.table-condensed.table-bordered
+    - machine.activities.order('created_at desc').each do |a|
+      tr
+        td.text-nowrap= l a.created_at
+        td= a.message
+- else
+  p Небыло активностей

@@ -21,6 +21,6 @@ class ApplicationAdapter
   end
 
   def log_failed_acivity(time, error)
-    machine.activities.create message: "Провалился старт на #{time} с ошибков #{error}"
+    machine.activities.create message: "Провалился старт на #{time} с ошибкой #{error}"
   end
 end
