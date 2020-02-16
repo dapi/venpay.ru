@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include RescueErrors
+  include Flashes
 
   private
 

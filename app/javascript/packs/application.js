@@ -7,9 +7,11 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import 'jquery/dist/jquery.slim.min'
+import 'jquery'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import 'bootstrap/dist/css/bootstrap'
+import 'noty_flash'
+import 'noty'
 
 function importAll (r) { r.keys().forEach(r); }
 importAll(require.context('../elements', true, /\.js$/))
@@ -17,7 +19,7 @@ importAll(require.context('../elements', true, /\.js$/))
 const initialHandler = () => {
   $(document). // TODO bind on modal content only
     on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
-  //$('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip()
 }
 
 document.addEventListener('turbolinks:load', initialHandler)

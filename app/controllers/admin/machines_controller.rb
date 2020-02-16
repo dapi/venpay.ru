@@ -1,5 +1,6 @@
 class Admin::MachinesController < Admin::ApplicationController
   def index
+    flash_notice! :index
   end
 
   def edit
@@ -8,6 +9,7 @@ class Admin::MachinesController < Admin::ApplicationController
 
   def update
     machine.update machine_params
+    flash_notice!
     redirect_to admin_machine_path(machine)
   rescue ActiveRecord::RecordInvalid => err
     render :edit, locals: { machine: err.record }
@@ -20,6 +22,7 @@ class Admin::MachinesController < Admin::ApplicationController
 
   def create
     machine = account.machines.create! machine_params
+    flash_notice!
     redirect_to admin_machine_path(machine)
   rescue ActiveRecord::RecordInvalid => err
     render :new, locals: { machine: err.record }
@@ -27,7 +30,8 @@ class Admin::MachinesController < Admin::ApplicationController
 
   def destroy
     machine.destroy!
-    redirect_to admin_machine_path(machine)
+    flash_notice!
+    redirect_to admin_machines_path
   end
 
   def show

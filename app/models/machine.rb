@@ -7,6 +7,7 @@ class Machine < ApplicationRecord
 
   belongs_to :account
   has_many :activities
+  has_many :payments
 
   validates :internal_id, presence: true, uniqueness: true
   validates :public_number, presence: true, uniqueness: true, length: { is: 6 }, format: { with: /\A\d+\z/, message: "Разрешены только цифры" }
