@@ -16,6 +16,7 @@ ru:
       price: 
         price: Цена
         title: Наименование услуги
+        work_time: Время работы
 
     errors:
       messages:

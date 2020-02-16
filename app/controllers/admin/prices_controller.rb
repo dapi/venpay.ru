@@ -22,6 +22,7 @@ class Admin::PricesController < Admin::ApplicationController
   end
 
   def create
+    account = available_accounts.find price_params[:account_id]
     price = account.prices.create! price_params
     flash_notice!
     redirect_to admin_prices_path(account_id: price.account_id)

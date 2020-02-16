@@ -20,6 +20,7 @@ ru:
       price:
         title: "Например: 'Массаж 10 минут'"
         price: В рублях
+        work_time: 'В минутах'
     labels:
       board:
         title: Наименование доски
