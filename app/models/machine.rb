@@ -9,8 +9,9 @@ class Machine < ApplicationRecord
   has_many :activities
 
   validates :internal_id, presence: true, uniqueness: true
-  validates :public_number, presence: true, uniqueness: true
+  validates :public_number, presence: true, uniqueness: true, length: { is: 6 }, format: { with: /\A\d+\z/, message: "Разрешены только цифры" }
   validates :slug, presence: true, uniqueness: true
+  validates :location, presence: true
   validates :adapter_class, presence: true, inclusion: { in: AVAILABLE_ADAPTERS.map(&:to_s) }
   validates :phone, phone: { allow_blank: true }
 

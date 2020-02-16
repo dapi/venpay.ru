@@ -6,6 +6,8 @@ ru:
         public_number: Публичный номер
         internal_id: Внутренний номер
         phone: Телефон
+        adapter_class: Адаптер
+        location: Адрес установки
       user:
         email: Емайл
         name: Имя

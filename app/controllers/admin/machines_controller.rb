@@ -7,10 +7,22 @@ class Admin::MachinesController < Admin::ApplicationController
   end
 
   def update
-    machine.update params.require(:machine).permit!
+    machine.update machine_params
     redirect_to admin_machine_path(machine)
   rescue ActiveRecord::RecordInvalid => err
     render :edit, locals: { machine: err.record }
+  end
+
+  def new
+    account = available_accounts.find machine_params[:account_id]
+    render locals: { machine: account.machines.build }
+  end
+
+  def create
+    machine = account.machines.create! machine_params
+    redirect_to admin_machine_path(machine)
+  rescue ActiveRecord::RecordInvalid => err
+    render :new, locals: { machine: err.record }
   end
 
   def show
@@ -29,5 +41,13 @@ class Admin::MachinesController < Admin::ApplicationController
 
   def machine
     @machine ||= available_machines.find params[:id]
+  end
+
+  def machine_params
+    params.require(:machine).permit!
+  end
+
+  def account
+    @account ||= available_accounts.find machine_params[:account_id]
   end
 end
