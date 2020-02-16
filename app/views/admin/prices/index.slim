@@ -1,0 +1,6 @@
+table.table.table-condensed.table-narrow
+  - account.prices.order(:position).each do |price|
+    tr
+      td= price.title
+      td= price.price.format
+      td= link_to 'изменить', '#'

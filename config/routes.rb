@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'machines#index'
+    resources :prices
     resources :machines do
       member do
         get :status
