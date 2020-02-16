@@ -1,0 +1,6 @@
+ru:
+  admin:
+    application:
+      navbar:
+        profile: Личный профиль
+        logout: Выйти
