@@ -25,8 +25,11 @@ module ApplicationHelper
     "#{price.title} за #{price.price.format}"
   end
 
-  def public_number(pn)
-    "№#{pn[0,3]}-#{pn[3,3]}"
+  def public_number(pn, prepend_prefix = false)
+    buffer = []
+    buffer << '№' if prepend_prefix
+    buffer << "#{pn[0,3]}-#{pn[3,3]}"
+    buffer.join
   end
 
   def humanized_state(result)

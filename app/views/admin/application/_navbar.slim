@@ -5,9 +5,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.flex-column.flex-md-row.sticky
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
-        = active_link_to admin_machines_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' do
-          -# span.mr-2= icon 'md-arrow-back'
-          = t '.machines'
+        - # don't use yet
+        /= active_link_to admin_machines_url, class: 'nav-link', wrap_tag: :li, wrap_class: 'nav-item' do
+          /span.mr-2= icon 'md-arrow-back'
+          /= t '.machines'
       ul.navbar-nav.navbar-right
         li.nav-item.dropdown
           = link_to '#', class: 'my-lg-0 py-lg-0 nav-link dropdown-toggle', data: { toggle: 'dropdown' }, id: :navbarDropdown, role: :button, 'aria-haspopup' => true, 'aria-expanded' => false do

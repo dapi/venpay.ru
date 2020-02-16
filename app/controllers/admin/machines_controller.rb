@@ -1,6 +1,5 @@
 class Admin::MachinesController < Admin::ApplicationController
   def index
-    flash_notice! :index
   end
 
   def edit
