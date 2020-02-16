@@ -16,4 +16,4 @@
     .col-md-6
       - if price.persisted?
         .float-right
-          = link_to 'Удалить', admin_machine_path(price), class: 'btn btn-danger', method: :delete, disable_with: 'В процессе..', data: { confirm: 'Удалить насовсем?' }
+          = link_to 'Удалить', admin_price_path(price), class: 'btn btn-danger', method: :delete, disable_with: 'В процессе..', data: { confirm: 'Удалить насовсем?' }
