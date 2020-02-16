@@ -25,6 +25,11 @@ class Admin::MachinesController < Admin::ApplicationController
     render :new, locals: { machine: err.record }
   end
 
+  def destroy
+    machine.destroy!
+    redirect_to admin_machine_path(machine)
+  end
+
   def show
     render locals: { machine: machine, form: StartForm.new }
   end

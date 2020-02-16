@@ -1,4 +1,9 @@
-= render 'back_link'
+.row
+  .col-md-6
+    = render 'back_link'
+  .col-md-6
+    - unless action_name == 'update' || action_name == 'edit'
+      .float-right= link_to 'Настроить', edit_admin_machine_path(machine, backurl: url_for)
 
 .row
   .col-md-9

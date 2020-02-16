@@ -20,26 +20,20 @@ hr
           = "#{price.title} (#{price.price.format})"
   br
   br
-  table.table
+  table.table.table-condensed.table-striped
     thead
       tr
-        th Номер машины
+        th Публичный номер устройства
+        th Внутренний номер
         th Адрес установки
         th Телефон
-        th QR Код
         th Действия
     - account.machines.order(:public_number).each do |machine|
       tr
         td
-          h3= public_number machine.public_number
-          .text-muted= machine.internal_id
+          = link_to admin_machine_path(machine) do
+            = public_number machine.public_number
+        td.text-muted= machine.internal_id
         td= machine.location
         td= machine.phone.presence || '-'
-        td
-          = link_to qr_code_url(machine), target: '_blank' do
-            = image_tag qr_code_url(machine)
-        td
-          ul.list-inline
-            li.list-inline-item= link_to 'Оплатить', slug_path(machine.slug)
-            li.list-inline-item= link_to 'Изменить', edit_admin_machine_path(machine)
-            li.list-inline-item= link_to 'Статус', admin_machine_path(machine)
+        td= link_to 'Страница выбора услуги ⤴', slug_path(machine.slug), target: '_blank'
