@@ -1,6 +1,6 @@
 class Admin::ApplicationController < ApplicationController
+  layout 'admin'
   before_action :require_login
-
   helper_method :available_accounts, :available_machines
 
   private

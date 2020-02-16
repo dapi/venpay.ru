@@ -1,0 +1,19 @@
+= render 'back_link'
+h1 Цены аккаунта #{account}
+hr
+p Сортируются по стоимости
+.mb-4= link_to 'Добавить цену', new_admin_price_path(price: { account_id: account.id }), class: 'btn btn-outline-primary'
+table.table.table-condensed.table-narrow.table-striped
+  thead
+    tr
+      th Наименование
+      th Время
+      th Цена
+      th
+  tbody
+    - account.prices.order(:position).each do |price|
+      tr
+        td= price.title
+        td= "#{price.work_time} мин."
+        td= price.price.format
+        td= link_to 'Изменить', edit_admin_price_path(price)

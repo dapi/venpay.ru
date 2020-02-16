@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_042835) do
+ActiveRecord::Schema.define(version: 2020_02_16_175741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2020_01_15_042835) do
     t.index ["title"], name: "index_accounts_on_title", unique: true
   end
 
+  create_table "activities", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "machine_id", null: false
+    t.string "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["machine_id"], name: "index_activities_on_machine_id"
+  end
+
   create_table "machines", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.integer "internal_id", null: false
@@ -39,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_01_15_042835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug", limit: 6, null: false
+    t.string "adapter_class", null: false
+    t.string "phone"
     t.index ["account_id"], name: "index_machines_on_account_id"
     t.index ["internal_id"], name: "index_machines_on_internal_id", unique: true
     t.index ["public_number"], name: "index_machines_on_public_number", unique: true
@@ -59,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_042835) do
     t.uuid "machine_id", null: false
     t.uuid "price_id", null: false
     t.integer "total_price_cents", default: 0, null: false
-    t.string "total_price_currency", default: "USD", null: false
+    t.string "total_price_currency", null: false
     t.string "title", null: false
     t.string "state", default: "new", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -73,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_042835) do
   create_table "prices", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.integer "price_cents", default: 0, null: false
-    t.string "price_currency", default: "USD", null: false
+    t.string "price_currency", null: false
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_042835) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "activities", "machines"
   add_foreign_key "machines", "accounts"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"

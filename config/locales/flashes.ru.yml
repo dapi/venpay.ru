@@ -4,24 +4,6 @@ ru:
     accounts:
       update:
         notice: Изменения сохранены
-    boards:
-      archive:
-        notice: Доска в архиве
-      create:
-        notice: Создана доска
-      destroy:
-        notice: Доска удалена
-      update:
-        notice: Обновление сохранено
-    cards:
-      archive:
-        notice: Задача в архиве
-      update:
-        notice: Задача обновлена
-    invalid_session_form: Не валидные данные формы
-    invite_accepted: Приглашение принято, вы зарегистрированы!
-    invited: Отправлено приглашений %{count}
-    link_expired: Ссылка на восстановление устарела. Запросите еще раз!
     logout: До свидания!
     membership_created: Участник добавлен
     not_authenticated: Нет публичного доступа к данному ресурсу. Предтавьтесь.
@@ -31,10 +13,22 @@ ru:
     profile:
       update:
         notice: Профиль обновлён
-    switch_locale: Привет!
+    prices:
+      create:
+        notice: Цена добавлена
+      update:
+        notice: Цена сохранена
+      destroy:
+        notice: Цена удалена
+    machines:
+      update:
+        notice: Настройки сохранены
+      create:
+        notice: Устройство добавлено
+      destroy:
+        notice: Устройство удалено
     users:
       create:
-        invalid_captcha: Не подтверждена captcha. Попробуйте отправить форму еще раз
         notice: Поздравляю, вы зарегистрированы! Можете установить свой пароль в профиле
     welcome: Добро пожаловать, %{name}!
     wrong_credentials: Неверный логин и пароль

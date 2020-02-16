@@ -1,0 +1,24 @@
+= simple_form_for user, url: profile_path, remote: true do |f|
+  = hidden_field_tag :back_url, back_url
+  .modal-header
+    h5#modalTitle.modal-title
+      = t '.title'
+    = render 'modal_close_button'
+
+  .modal-body
+    = f.error_notification
+    .row
+      .col-md-2
+        = gravatar_tag current_user,
+          size: 64,
+          html: { style: 'border-radius: 50%', title: t('helpers.gravatar_hint') }
+      .col-md-10
+        = f.input :email
+    = f.input :name
+    .mt-2.mb-4
+      a(href='#changePassowrd' data-toggle="collapse" role="button" aria-expanded="false" aria-controls="changePassowrd")= t '.change_password'
+      .collapse.mt-4#changePassowrd
+        = f.input :password
+
+    .modal-footer
+      = f.button :submit, class: 'btn-primary', data: { enableWhenChanged: true, disable_with: t('helpers.disable_with') }

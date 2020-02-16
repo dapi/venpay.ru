@@ -1,0 +1,21 @@
+table.table.table-condensed.table-striped
+  thead
+    tr
+      th Публичный номер устройства
+      th Внутренний номер
+      th Адрес установки
+      th Телефон
+      th Запуски
+      th Оплаты
+      th Действия
+  - machines.each do |machine|
+    tr
+      td
+        = link_to admin_machine_path(machine) do
+          = public_number machine.public_number
+      td.text-muted= machine.internal_id
+      td= machine.location
+      td= machine.phone.presence || '-'
+      td= machine.activities.count
+      td= machine.payments.count
+      td= link_to 'Страница выбора услуги ⤴', slug_path(machine.slug), target: '_blank'

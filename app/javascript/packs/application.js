@@ -7,12 +7,31 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("jquery")
-import 'bootstrap/dist/js/bootstrap.min'
+import 'jquery'
+import 'bootstrap/dist/js/bootstrap.bundle'
 import 'bootstrap/dist/css/bootstrap'
+import 'noty_flash'
+import 'noty'
+import './application.sass'
 
 function importAll (r) { r.keys().forEach(r); }
 importAll(require.context('../elements', true, /\.js$/))
+
+const initialHandler = () => {
+  $(document). // TODO bind on modal content only
+    on('shown.bs.modal', (e) => $('[autofocus]', e.target).focus() )
+  $('[data-toggle="tooltip"]').tooltip()
+}
+
+document.addEventListener('turbolinks:load', initialHandler)
+
+$.ajaxSetup({
+  xhrFields: {
+    withCredentials: true
+  }
+})
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.

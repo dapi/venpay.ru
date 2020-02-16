@@ -26,9 +26,14 @@ Log outgoing HTTP requests in ruby
                               scanner GET    /scanner(.:format)                                                                       mobile/welcome#scanner
                               install GET    /install(.:format)                                                                       mobile/welcome#install
                                  slug GET    /m/:slug(.:format)                                                                       mobile/machines#show
-                             machines POST   /machines(.:format)                                                                      mobile/machines#create
+                             machines GET    /machines(.:format)                                                                      mobile/machines#index
+                                      POST   /machines(.:format)                                                                      mobile/machines#create
                           new_machine GET    /machines/new(.:format)                                                                  mobile/machines#new
+                         edit_machine GET    /machines/:id/edit(.:format)                                                             mobile/machines#edit
                               machine GET    /machines/:id(.:format)                                                                  mobile/machines#show
+                                      PATCH  /machines/:id(.:format)                                                                  mobile/machines#update
+                                      PUT    /machines/:id(.:format)                                                                  mobile/machines#update
+                                      DELETE /machines/:id(.:format)                                                                  mobile/machines#destroy
                       success_payment GET    /payments/:id/success(.:format)                                                          mobile/payments#success
                          fail_payment GET    /payments/:id/fail(.:format)                                                             mobile/payments#fail
                              payments GET    /payments(.:format)                                                                      mobile/payments#index

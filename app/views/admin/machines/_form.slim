@@ -1,0 +1,25 @@
+= simple_form_for [:admin, machine] do |f|
+  = f.input :account_id, as: :hidden
+  = f.error_messages
+  .row
+    .col-md-6
+      = f.input :public_number
+      = f.input :internal_id
+      = f.input :location
+    .col-md-6
+      = f.input :phone
+      = f.input :adapter_class, collection: Machine::AVAILABLE_ADAPTERS, include_blank: false
+  hr
+
+  .row
+    .col-md-6
+      = f.button :submit, class: 'btn btn-primary', value: 'Сохранить', disable_with: 'В процессе..'
+    .col-md-6
+      - if machine.persisted?
+        .float-right
+          = link_to 'Удалить', admin_machine_path(machine), class: 'btn btn-danger', method: :delete, disable_with: 'В процессе..', data: { confirm: 'Удалить насовсем?' }
+
+hr
+- if machine.persisted?
+  = link_to qr_code_url(machine), target: '_blank' do
+    = image_tag qr_code_url(machine)

@@ -1,0 +1,14 @@
+.row
+  .col-md-6
+    = render 'back_link'
+  .col-md-6
+    - unless action_name == 'update' || action_name == 'edit'
+      .float-right= link_to 'Настроить', edit_admin_machine_path(machine, backurl: url_for)
+
+.row
+  .col-md-9
+    h1 Аппарат #{public_number machine.public_number}
+    .text-muted= machine.internal_id
+  .col-md-3
+    .float-right= machine.phone
+hr

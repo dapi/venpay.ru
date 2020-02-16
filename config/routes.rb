@@ -7,11 +7,12 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %i[new create]
-  # resource :profile, only: %i[show update], controller: :profile
+  resource :profile, only: %i[show update], controller: :profile
   resources :password_resets, only: %i[new create edit update]
 
   namespace :admin do
     root to: 'machines#index'
+    resources :prices
     resources :machines do
       member do
         get :status
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
     get :scanner, to: 'welcome#scanner'
     get :install, to: 'welcome#install'
     get '/m/:slug', to: 'machines#show', as: :slug
-    resources :machines, only: [:show, :new, :create]
+    resources :machines
     resources :payments do
       member do
         get 'success'

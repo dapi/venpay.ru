@@ -11,8 +11,8 @@ class NotificationsController < ApplicationController
     ).notify_success
 
     logger.info "CloudPayments success #{result}"
-    response = RovosClient.build.post("/machines/#{payment.machine.internal_id}", state: 2, work_time: payment.price.work_time)
-    logger.info "RovosClient response #{response}"
+    response = machine.adapter.start payment.price.work_time
+    logger.info "Agent response #{response}"
     render json: result
   end
 

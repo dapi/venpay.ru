@@ -10,9 +10,17 @@ ru:
         emails: Список емайлов, разделенный переводом строки, запятою или пробелом
       password_reset:
         email: Введите свой емайл и мы отправим инструкцию для восстановления
+      machine:
+        phone: Для отправки управляющей SMS
+        public_humber: 'Например: 123456'
+        location: Используется в Пользовательсом Соглашении
       user:
         access_key: Указывается в HTTP заголовке X-Access-Key
         password: Оставьте пустым чтобы не менять
+      price:
+        title: "Например: 'Массаж 10 минут'"
+        price: В рублях
+        work_time: 'В минутах'
     labels:
       board:
         title: Наименование доски
@@ -31,8 +39,9 @@ ru:
         login: Логин (email)
     'no': нет
     placeholders:
-      board:
-        title: Мой проект
+      machine:
+        public_number: 123456
+        phone: +7-XXX-XXX-XX-XX
     required:
       mark: "*"
       text: обязательное поле

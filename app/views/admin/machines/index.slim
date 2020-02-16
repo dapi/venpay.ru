@@ -2,38 +2,7 @@ h1 Доступные устройства
 hr
 
 - available_accounts.order(:created_at).each do |account|
-  .row
-    .col-md-6
-      h2
-        = account.title
-      - if account.is_test
-        .badge.badge-warning Тестовый режим
-      - else
-        .badge.badge-success Рабочий режим
-    .col-md-6
-      h3 Цены
-      ul
-      - account.prices.order(:position).each do |price|
-        li
-          = "#{price.title} (#{price.price.format})"
+  = render 'account', account: account
   br
   br
-  table.table
-    thead
-      tr
-        th Публичный номер машины
-        th Адрес установки
-        th QR Код
-        th Действия
-    - account.machines.order(:public_number).each do |machine|
-      tr
-        td
-          h3= public_number machine.public_number
-        td= machine.location
-        td
-          = link_to qr_code_url(machine), target: '_blank' do
-            = image_tag qr_code_url(machine)
-        td
-          ul.list-inline
-            li.list-inline-item= link_to 'Оплата', slug_path(machine.slug)
-            li.list-inline-item= link_to 'Статус', admin_machine_path(machine)
+  = render 'machines', machines: account.machines.order(:public_number)

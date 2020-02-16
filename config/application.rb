@@ -11,6 +11,7 @@ module Venpay
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.autoload_paths << "#{Rails.root}/app/adapters"
     config.assets.enabled = false
     config.generators do |g|
       g.assets false

@@ -1,0 +1,37 @@
+---
+ru:
+  activerecord:
+    attributes:
+      machine:
+        public_number: Публичный номер
+        internal_id: Внутренний номер
+        phone: Телефон
+        adapter_class: Адаптер
+        location: Адрес установки
+      user:
+        email: Емайл
+        name: Имя
+        password: Пароль
+        password_confirmation: Подтвержение пароля
+      price: 
+        price: Цена
+        title: Наименование услуги
+        work_time: Время работы
+
+    errors:
+      messages:
+        intersection: Период пересекается с другим периодом (id = %{id}).
+        invalid_range: Конечная дата должна быть позже начальной
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+        uri_component: URI component
+      models:
+        exchange:
+          attributes:
+            is_available:
+              present: Нет смысла включать загрузку если не указан xml_url
+      not_found: Не найден
+    models:
+      machine: Устройство

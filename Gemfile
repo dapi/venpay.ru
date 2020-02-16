@@ -27,7 +27,7 @@ gem 'turbolinks', '~> 5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'nokogiri-happymapper'
 gem 'slim-rails'
 gem 'money-rails'
 gem 'workflow'
@@ -36,15 +36,18 @@ gem 'semver2'
 gem 'rails-i18n'
 gem 'attr_encrypted'
 gem 'faraday'
+gem 'phonelib'
 gem 'rqrcode'
 gem 'settingslogic'
 gem 'active_link_to'
 gem 'simple_form'
 gem 'auto_logger'
+gem 'nilify_blanks'
 gem 'pagy'
 gem 'sorcery'
 gem 'virtus'
 gem 'valid_email'
+gem 'gravatarify'
 
 group :development, :test do
   gem 'httplog'
@@ -75,6 +78,13 @@ group :development do
   gem 'capistrano-shell', require: false
   gem 'capistrano-yarn', require: false
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma', require: false
+
+  gem 'terminal-notifier-guard' # , '~> 1.6.1', require: darwin_only('terminal-notifier-guard')
+
+  gem 'guard'
+
+  gem 'guard-ctags-bundler'
+  gem 'guard-minitest'
 end
 
 group :test do

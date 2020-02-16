@@ -8,4 +8,8 @@ class Account < ApplicationRecord
   attr_encrypted :cloud_payments_api_key, key: Rails.application.credentials.secret_key_base.first(32)
 
   validates :title, presence: true, uniqueness: true
+
+  def to_s
+    title
+  end
 end

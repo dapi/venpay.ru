@@ -1,0 +1,12 @@
+- if machine.payments.any? 
+  h3.mb-3 Журнал оплат
+  table.table.table-sm.table-condensed.table-bordered
+    - machine.payments.order('created_at desc').each do |payment|
+      tr
+        td.text-nowrap= l payment.created_at
+        td
+          = payment_state_label payment.state
+        td.text-nowrap= payment.total_price.format
+        td= payment.title
+- else
+  p.alert Оплат небыло
