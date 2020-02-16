@@ -12,6 +12,7 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 import 'bootstrap/dist/css/bootstrap'
 import 'noty_flash'
 import 'noty'
+import './application.sass'
 
 function importAll (r) { r.keys().forEach(r); }
 importAll(require.context('../elements', true, /\.js$/))

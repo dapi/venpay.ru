@@ -6,4 +6,8 @@
     = render 'admin/actions/form', machine: machine, form: form
 
 .mt-4
-  = render 'activities', machine: machine
+  .row
+    .col-md-6
+      = render 'activities', machine: machine
+    .col-md-6
+      = render 'payments', machine: machine
