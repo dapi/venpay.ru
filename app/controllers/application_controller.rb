@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def xhr_only?
+  def xhr_only!
     raise 'xhr only' unless request.xhr?
   end
 end
