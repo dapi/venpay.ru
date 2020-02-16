@@ -27,6 +27,8 @@ hr
         th Внутренний номер
         th Адрес установки
         th Телефон
+        th Запуски
+        th Оплаты
         th Действия
     - account.machines.order(:public_number).each do |machine|
       tr
@@ -36,4 +38,6 @@ hr
         td.text-muted= machine.internal_id
         td= machine.location
         td= machine.phone.presence || '-'
+        td= machine.activities.count
+        td= machine.payments.count
         td= link_to 'Страница выбора услуги ⤴', slug_path(machine.slug), target: '_blank'

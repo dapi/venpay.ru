@@ -4,6 +4,8 @@
     - machine.payments.order('created_at desc').each do |payment|
       tr
         td.text-nowrap= l payment.created_at
+        td
+          = payment_state_label payment.state
         td.text-nowrap= payment.total_price.format
         td= payment.title
 - else

@@ -3,6 +3,16 @@ module ApplicationHelper
     'VENPAY'
   end
 
+  def payment_state_label(state)
+    case state
+    when 'new' then content_tag(:span, 'Ожидание оплаты', class: 'badge badge-warning')
+    when 'paid' then content_tag(:span, 'Оплачен', class: 'badge badge-success')
+    when 'failed' then content_tag(:span, 'Оплата не удалась', class: 'badge badge-danger')
+    else
+      content_tag(:span, "Неизвестный статус #{state}")
+    end
+  end
+
   def qr_code_url(machine)
     QrCodeGenerator.for_machine(machine).qr_code_url
   end
