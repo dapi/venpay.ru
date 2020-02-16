@@ -13,10 +13,17 @@ ru:
     profile:
       update:
         notice: Профиль обновлён
+    prices:
+      create:
+        notice: Цена добавлена
+      update:
+        notice: Цена сохранена
+      destroy:
+        notice: Цена удалена
     machines:
       update:
         notice: Настройки сохранены
-      created:
+      create:
         notice: Устройство добавлено
       destroy:
         notice: Устройство удалено

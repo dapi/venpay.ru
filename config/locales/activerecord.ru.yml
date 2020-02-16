@@ -13,6 +13,10 @@ ru:
         name: Имя
         password: Пароль
         password_confirmation: Подтвержение пароля
+      price: 
+        price: Цена
+        title: Наименование услуги
+
     errors:
       messages:
         intersection: Период пересекается с другим периодом (id = %{id}).

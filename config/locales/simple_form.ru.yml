@@ -17,6 +17,9 @@ ru:
       user:
         access_key: Указывается в HTTP заголовке X-Access-Key
         password: Оставьте пустым чтобы не менять
+      price:
+        title: "Например: 'Массаж 10 минут'"
+        price: В рублях
     labels:
       board:
         title: Наименование доски

@@ -1,6 +1,10 @@
+= render 'back_link'
+h1 Цены аккаунта #{account}
+hr
+p Сортируются по стоимости
 table.table.table-condensed.table-narrow
   - account.prices.order(:position).each do |price|
     tr
       td= price.title
       td= price.price.format
-      td= link_to 'изменить', '#'
+      td= link_to 'Изменить', edit_admin_price_path(price)
