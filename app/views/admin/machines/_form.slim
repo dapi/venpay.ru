@@ -16,8 +16,8 @@
       = f.button :submit, class: 'btn btn-primary', value: 'Сохранить', disable_with: 'В процессе..'
     .col-md-6
       - if machine.persisted?
-      .float-right
-        = link_to 'Удалить', admin_machine_path(machine), class: 'btn btn-danger', method: :delete, disable_with: 'В процессе..', data: { confirm: 'Удалить насовсем?' }
+        .float-right
+          = link_to 'Удалить', admin_machine_path(machine), class: 'btn btn-danger', method: :delete, disable_with: 'В процессе..', data: { confirm: 'Удалить насовсем?' }
 
 hr
 - if machine.persisted?
