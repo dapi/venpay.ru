@@ -1,8 +1,5 @@
-h1 Доступные устройства
-hr
-
 - available_accounts.order(:created_at).each do |account|
-  = render 'account', account: account
-  br
-  br
-  = render 'machines', machines: account.machines.order(:public_number)
+  .mb-5
+    .mb-5= render 'account', account: account
+    = render 'machines', machines: account.machines.order(:public_number)
+    hr
