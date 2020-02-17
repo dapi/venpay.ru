@@ -33,6 +33,10 @@ module ApplicationHelper
   end
 
   def humanized_state(result)
+    if result.nil?
+      content_tag :span, 'Статус не известен', class: 'badge badge-warning'
+      return
+    end
     r = result['received']
 
     buffer = []
