@@ -34,8 +34,7 @@ module ApplicationHelper
 
   def humanized_state(result)
     if result.nil?
-      content_tag :span, 'Статус не известен', class: 'badge badge-warning'
-      return
+      return content_tag :span, 'Статус не известен', class: 'badge badge-warning'
     end
     r = result['received']
 
