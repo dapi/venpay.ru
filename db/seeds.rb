@@ -12,16 +12,16 @@ PRICES = [
   { work_time: 20, price: 150.to_money(:rub), position: 2, title: '20 минут' },
 ]
 
-user = User.create_with(password: 'password').find_or_create_by(email: 'admin@example.com')
+user = User.create_with(password: 'password').find_or_create_by!(email: 'admin@example.com')
 
 account_rovos = Account.create_with(
   cloud_payments_public_id: Rails.application.credentials.cloud_payments_public_id,
   cloud_payments_api_key: Rails.application.credentials.cloud_payments_api_key
 ).find_or_create_by(title: 'ROVOS')
 
-account_rovos.machines.create_with(public_number: '127801', location: 'Офис').find_or_create_by(internal_id: 100020003)
+account_rovos.machines.create_with(public_number: '000001', location: 'Офис').find_or_create_by!(internal_id: 100000001)
 PRICES.each do |price|
-  account_rovos.prices.create_with(price: price[:price], work_time: price[:work_time]).find_or_create_by(title: price[:title])
+  account_rovos.prices.create_with(price: price[:price], work_time: price[:work_time]).find_or_create_by!(title: price[:title])
 end
 
 account_rovos.users << user
@@ -31,9 +31,9 @@ account_pasha = Account.create_with(
   cloud_payments_api_key: Rails.application.credentials.cloud_payments_api_key
 ).find_or_create_by(title: 'БИРЮКОВ')
 
-account_pasha.machines.create_with(public_number: '438932', location: 'Офис Данила').find_or_create_by(internal_id: 'TC00570')
+account_pasha.machines.create_with(public_number: '000002', location: 'Офис').find_or_create_by!(internal_id: 'TC00000')
 PRICES.each do |price|
-  account_pasha.prices.create_with(price: price[:price], work_time: price[:work_time]).find_or_create_by(title: price[:title])
+  account_pasha.prices.create_with(price: price[:price], work_time: price[:work_time]).find_or_create_by!(title: price[:title])
 end
 
 account_pasha.users << user
