@@ -2,8 +2,6 @@ class Mobile::PaymentsController < Mobile::ApplicationController
   include AutoLogger
 
   def show
-    payment = Payment.find params[:id]
-
     if payment.paid?
       # TODO Убедиться что по этому платежу машину включали,если нет, то запустить процесс включения
       render :success, locals: { payment: payment }
@@ -25,8 +23,6 @@ class Mobile::PaymentsController < Mobile::ApplicationController
   end
 
   def success
-    payment = Payment.find params[:id]
-    payment.machine.adapter.start payment.work_time
     render locals: { payment: payment }
   end
 
@@ -35,6 +31,10 @@ class Mobile::PaymentsController < Mobile::ApplicationController
   end
 
   private
+
+  def payments
+    @payment ||= Payment.find params[:id]
+  end
 
   def permitted_params
     params.permit(:machine_id, :price_id)

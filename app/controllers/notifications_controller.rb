@@ -1,3 +1,8 @@
+#
+# Принимает от сервера CloudPayments запросы об успехе в оплате.
+# URL к этому контроллеру прописывается как Callback URL в настройках CloudPayments
+#
+# TODO Переименовать в CloudPayments::Notifications
 class NotificationsController < ApplicationController
   include AutoLogger
 
@@ -13,7 +18,6 @@ class NotificationsController < ApplicationController
     logger.info "CloudPayments success #{result}"
     response = payment.machine.adapter.start payment.work_time
     logger.info "Agent response #{response}"
-    machine.activities.create message: "CloudPayments success callback"
     render json: result
   end
 
@@ -25,7 +29,6 @@ class NotificationsController < ApplicationController
     ).notify_fail
 
     logger.info "CloudPayments fail #{result}"
-    machine.activities.create message: "CloudPayments fail callback"
     render json: result
   end
 
