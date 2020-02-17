@@ -11,8 +11,9 @@ class NotificationsController < ApplicationController
     ).notify_success
 
     logger.info "CloudPayments success #{result}"
-    response = machine.adapter.start payment.price.work_time
+    response = payment.machine.adapter.start payment.work_time
     logger.info "Agent response #{response}"
+    machine.activities.create message: "CloudPayments success callback"
     render json: result
   end
 
@@ -24,6 +25,7 @@ class NotificationsController < ApplicationController
     ).notify_fail
 
     logger.info "CloudPayments fail #{result}"
+    machine.activities.create message: "CloudPayments fail callback"
     render json: result
   end
 
