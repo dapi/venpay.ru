@@ -3,7 +3,7 @@
 module RescueErrors
   extend ActiveSupport::Concern
 
-  LAYOUT = 'application'
+  LAYOUT = 'simple'
 
   included do
     # Examples:
