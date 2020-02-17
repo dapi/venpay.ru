@@ -1,10 +1,8 @@
 # Q-telecom
 #
-class SmsService
+class SmsService < ApplicationService
   SERVICE_URL = 'https://service.qtelecom.ru'.freeze
   SERVICE_PATH = '/public/http/'.freeze
-
-  include Virtus.model
 
   def call(phones, message)
     raw_response = conn.post do |req|
