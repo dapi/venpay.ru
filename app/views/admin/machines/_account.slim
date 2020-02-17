@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .col-md-4
     h2= account.title
     - if account.is_test
       .badge.badge-warning Тестовый режим
@@ -7,10 +7,16 @@
       .badge.badge-success Рабочий режим
 
     .mt-4= link_to 'Добавить устройство', new_admin_machine_path(machine: { account_id: account }), class: 'btn btn-sm btn-outline-primary'
-  .col-md-6
+  .col-md-4
     h3 style='display: inline-block' Цены
     span.ml-2= link_to 'Изменить', admin_prices_path(account_id: account)
-    ul
+    ul.ul-unpadded
       - account.prices.order(:position).each do |price|
         li
           = "#{price.title} (#{price.price.format})"
+  .col-md-4
+    h3 style='display: inline-block' Участники
+    ul.ul-unpadded
+      - account.memberships.order(:created_at).each do |member|
+        li
+          = mail_to member.user.email, member.user.name
