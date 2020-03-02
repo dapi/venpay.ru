@@ -11,15 +11,17 @@
 # Разворачивани
 
 1. Установите [rbenv](https://github.com/rbenv/rbenv)
+1. Установите [nvm](https://github.com/nvm-sh/nvm)
 2. Зайдите в каталог проекта.
 3. Установите через нужную версию ruby через `rbenv install`
+3. Установите через нужную версию node через `nvminstall`
 4. Установите нужные модули `bundle install`
 5. Проинициализируйте базу `rake db:setup`
 
 # Запуск
 
 ```bash
-rails s
+./bin/webpack-dev-server & rails s
 ```
 
 # Деплой
