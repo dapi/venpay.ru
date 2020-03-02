@@ -15,15 +15,15 @@ module RescueErrors
     rescue_from ActionController::MissingFile,       with: :not_found
     rescue_from ActiveRecord::RecordNotFound,        with: :not_found
     rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_authenticity_token
+    rescue_from ApplicationAdapter::Error,           with: :rescue_error
   end
 
   private
 
-  def handle_humanized_error(exception)
-    render 'exception', locals: { exception: exception }, layout: LAYOUT
-  end
-
   def rescue_error(exception)
+    Bugsnag.notify exception do |b|
+      b.severity = :warning
+    end
     render 'exception', locals: { exception: exception }, layout: LAYOUT
   end
 
