@@ -24,7 +24,9 @@
 ./bin/webpack-dev-server & rails s
 ```
 
-Далее открываем в браузере http://localhost:3000/
+Далее открываем в браузере:
+* http://localhost:3000/ - Публичная страница
+* http://localhost:3000/admin/ - Админка
 
 # Деплой
 
