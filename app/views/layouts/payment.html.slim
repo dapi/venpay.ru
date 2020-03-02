@@ -4,10 +4,8 @@ html lang=I18n.locale
     = render 'layouts/mobile/head'
     = stylesheet_pack_tag 'mobile', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'mobile', 'data-turbolinks-track': 'reload'
+    link rel="dns-prefetch" href="//widget.cloudpayments.ru"
+    link rel="prefetch" href='https://widget.cloudpayments.ru/bundles/cloudpayments' as="script"
   body
     .container-sm.px-3.py-3
       = yield
-
-    hr
-    .container-sm.px-3.py-3
-      span Версия #{AppVersion}

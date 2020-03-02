@@ -1,5 +1,6 @@
 class Mobile::PaymentsController < Mobile::ApplicationController
   include AutoLogger
+  layout 'payment'
 
   def show
     if payment.paid?
@@ -32,7 +33,7 @@ class Mobile::PaymentsController < Mobile::ApplicationController
 
   private
 
-  def payments
+  def payment
     @payment ||= Payment.find params[:id]
   end
 
