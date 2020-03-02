@@ -24,6 +24,8 @@
 ./bin/webpack-dev-server & rails s
 ```
 
+Далее открываем в браузере http://localhost:3000/
+
 # Деплой
 
 > cap production deploy
