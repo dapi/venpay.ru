@@ -4,19 +4,25 @@
 
 # Зависимости
 
-* postgresql 10+
-* redis (для sidekiq)
+* Ubuntu 18.5
+* Postgresql 10+
+* Redis (для sidekiq)
+
+# Разворачивани
+
+1. Установите [rbenv](https://github.com/rbenv/rbenv)
+2. Зайдите в каталог проекта.
+3. Установите через нужную версию ruby через `rbenv install`
+4. Установите нужные модули `bundle install`
+5. Проинициализируйте базу `rake db:setup`
 
 # Запуск
 
 ```bash
-rvm install
-bundle
-rake db:setup
 rails s
 ```
 
-# Развертка
+# Деплой
 
 > cap production deploy
 
