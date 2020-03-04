@@ -9,17 +9,12 @@ class UsersController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
-    user.with_account = true
     user.locale = I18n.locale
     user.save!
 
-    accept_invites! user
-
     auto_login user
 
-    board = user.personal_account.boards.take
-
-    redirect_to board_url(board), notice: t_flash
+    redirect_to admin_root_url(board), notice: t_flash
   rescue ActiveRecord::RecordInvalid => e
     if e.record.errors.details.key?(:email) && e.record.errors.details.dig(:email).first[:error] == :taken
       flash_notice! :you_are_registered
@@ -50,12 +45,5 @@ class UsersController < ApplicationController
 
   def user
     @user ||= User.new permitted_params
-  end
-
-  # TODO: async
-  def accept_invites!(user)
-    Invite.where(email: user.email).find_each do |invite|
-      InviteAcceptor.new(invite, user).accept!
-    end
   end
 end
