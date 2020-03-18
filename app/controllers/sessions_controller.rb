@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  layout 'simple'
+
   def new
     render locals: { user_session: UserSession.new, message: nil }
   end
@@ -21,6 +23,8 @@ class SessionsController < ApplicationController
   private
 
   def user_session
-    @user_session ||= UserSession.new params[:user_session].permit(:login, :password, :remember_me)
+    @user_session ||= UserSession.new(
+      params[:user_session].permit(:login, :password, :remember_me)
+    )
   end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  layout 'simple'
+
   before_action :validate_captcha, only: [:create] if Settings.use_captcha
 
   def new
